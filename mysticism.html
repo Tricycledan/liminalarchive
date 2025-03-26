@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="On Mysticism - The Liminal Archive: Exploring the edges of knowledge and possibility">
+    <title>On Mysticism | The Liminal Archive</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Dark Theme Reset */
+        :root {
+            --bg-primary: #1A1A1A;
+            --bg-secondary: #1e1e1e;
+            --text-primary: #A0A0A0;
+            --text-secondary: #b0b0b0;
+            --accent-color: #4a4a4a;
+            --red: #A10129;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inknut Antiqua', serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .site-margin {
+            margin-left: 170px;
+            margin-right: 170px;
+        }
+
+        #SITE_HEADER {
+            background-color: #000000;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            width: 100%;
+            margin: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding-left: 170px;
+        }
+
+        nav li {
+            position: relative;
+            margin: 0 20px;
+        }
+
+        nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-family: 'Inknut Antiqua', serif;
+        }
+
+        nav a:hover {
+            color: var(--red);
+        }
+
+        nav ul ul {
+            display: none;
+            position: absolute;
+            background-color: var(--bg-secondary);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            border-radius: 4px;
+            padding: 10px 0;
+            top: 100%;
+            left: 0;
+        }
+
+        nav li:hover > ul {
+            display: block;
+            z-index: 101;
+        }
+
+        nav ul ul li {
+            margin: 0;
+            padding: 10px 20px;
+        }
+
+        .category-hero {
+            position: relative;
+            height: 50vh;
+            min-height: 400px;
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),
+                         url('images/mysticism_header.jpg') center center / cover no-repeat;
+            background-attachment: fixed;
+        }
+
+        .title-section {
+            padding: 20px 0 50px 0;
+            text-align: center;
+        }
+
+        .title-section .quote {
+            font-size: 13px;
+            font-style: italic;
+            color: var(--text-primary);
+            margin-bottom: 1em;
+        }
+
+        .title-section .attribution {
+            font-size: 13px;
+            font-style: italic;
+            color: var(--text-primary);
+            margin-bottom: 3em;
+        }
+
+        .title-section h1 {
+            font-size: 56px;
+            font-weight: 400;
+            color: var(--red);
+            margin-bottom: 0.5em;
+        }
+
+        .title-section .description {
+            font-size: 18px;
+            color: var(--text-primary);
+            margin-bottom: 0.5em;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .publications {
+            padding: 0 0 50px 0;
+        }
+
+        .publication-box {
+            padding: 20px;
+            background-color: #333333;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .publication-box h5 {
+            font-family: 'Inknut Antiqua', serif;
+            color: var(--red);
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: 400;
+        }
+
+        .publication-box p {
+            font-family: 'Inknut Antiqua', serif;
+            font-size: 14px;
+            font-weight: 400;
+            color: #CCCCCC;
+        }
+
+        .publication-box .pdf-icon {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            width: 80px;
+            height: auto;
+        }
+
+        #SITE_FOOTER {
+            background-color: #737373;
+            color: var(--text-primary);
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        #SITE_FOOTER .quote {
+            font-size: 22px;
+            font-weight: 400;
+            color: #000000;
+            letter-spacing: 0.45em;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        #SITE_FOOTER .copyright {
+            font-size: 14px;
+            color: #000000;
+            display: block;
+            text-align: left;
+            margin-left: 170px;
+        }
+
+        @media (max-width: 768px) {
+            .site-margin {
+                margin-left: 20px;
+                margin-right: 20px;
+            }
+            nav ul {
+                flex-direction: column;
+                padding: 10px 0;
+            }
+            nav ul ul {
+                position: static;
+                box-shadow: none;
+                background-color: var(--bg-primary);
+                padding: 0;
+            }
+            nav li {
+                margin: 10px 0;
+            }
+            .category-hero {
+                height: 40vh;
+                min-height: 300px;
+            }
+            .title-section h1 {
+                font-size: 40px;
+            }
+            .title-section .description {
+                font-size: 16px;
+                max-width: 400px;
+            }
+            .publication-box .pdf-icon {
+                width: 64px;
+            }
+            #SITE_FOOTER .copyright {
+                margin-left: 0;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="SITE_HEADER">
+        <nav>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li>
+                    <a href="#">Archive</a>
+                    <ul>
+                        <li><a href="chemical-works.html">Chemical Works</a></li>
+                        <li><a href="commentaries.html">Commentaries</a></li>
+                        <li><a href="fringe.html">Fringe</a></li>
+                        <li><a href="guest-contributions.html">Guest Contributions</a></li>
+                        <li><a href="human-condition.html">Human Condition</a></li>
+                        <li><a href="meditation.html">Meditation</a></li>
+                        <li><a href="mysticism.html">Mysticism</a></li>
+                        <li><a href="philosophy.html">Philosophy</a></li>
+                        <li><a href="psychotropics.html">Psychotropics</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="category-hero"></section>
+
+        <section class="title-section site-margin">
+            <div class="quote">
+                <em>"Whereof one cannot speak, thereof one must be silent."</em>
+            </div>
+            <div class="attribution">
+                <em>- Ludwig Wittgenstein</em>
+            </div>
+            <h1>On Mysticism</h1>
+            <div class="description">
+                Coming soon
+            </div>
+        </section>
+
+        <section class="publications site-margin">
+            <div class="publication-box">
+                <h5>1 / Publication Title</h5>
+                <p>Describe the publication and include any relevant details.</p>
+                <img src="images/pdf-icon.png" alt="PDF" class="pdf-icon">
+            </div>
+            <div class="publication-box">
+                <h5>2 / Publication Title</h5>
+                <p>Describe the publication and include any relevant details.</p>
+                <img src="images/pdf-icon.png" alt="PDF" class="pdf-icon">
+            </div>
+            <div class="publication-box">
+                <h5>3 / Publication Title</h5>
+                <p>Describe the publication and include any relevant details.</p>
+                <img src="images/pdf-icon.png" alt="PDF" class="pdf-icon">
+            </div>
+        </section>
+    </main>
+
+    <footer id="SITE_FOOTER">
+        <span class="quote">Quod Latet, Se Aperit Quaerenti</span>
+        <span class="copyright">© 2025 The Liminal Archive</span>
+    </footer>
+</body>
+</html>
