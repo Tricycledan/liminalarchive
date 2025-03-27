@@ -4,8 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="The Liminal Archive: Exploring the boundaries of knowledge, consciousness, and human experience">
+    
+    <!-- SEO and Social Media Meta Tags -->
+    <meta property="og:title" content="The Liminal Archive">
+    <meta property="og:description" content="Exploring the boundaries of knowledge, consciousness, and human experience">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
     <title>The Liminal Archive</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Preload and Font Loading -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@400;700&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@400;700&display=swap&font-display=swap" rel="stylesheet">
+    
     <style>
         /* Dark Theme Reset */
         :root {
@@ -15,12 +26,13 @@
             --text-secondary: #b0b0b0;
             --accent-color: #4a4a4a;
             --red: #A10129;
-        } 
+        }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            transition: all 0.3s ease;
         }
 
         body {
@@ -36,7 +48,7 @@
         }
 
         #SITE_HEADER {
-            background-color: #000000;
+            background-color: rgba(0, 0, 0, 0.9);
             padding: 15px 0;
             position: sticky;
             top: 0;
@@ -125,7 +137,6 @@
             color: #CCCCCC;
         }
 
-        /* Categories Grid */
         .categories {
             display: grid;
             grid-template-columns: repeat(3, 270px);
@@ -252,7 +263,14 @@
             margin-left: 170px;
         }
 
-        @media (max-width: 768px) {
+        @media screen and (max-width: 768px) {
+            .site-margin, 
+            nav ul,
+            #SITE_FOOTER .copyright {
+                margin-left: 20px;
+                margin-right: 20px;
+            }
+
             .hero h1 {
                 font-size: 32px;
             }
@@ -287,21 +305,17 @@
                 font-size: 40px;
                 text-align: center;
             }
-            #SITE_FOOTER .copyright {
-                margin-left: 0;
-                text-align: center;
-            }
         }
     </style>
 </head>
 <body>
     <header id="SITE_HEADER">
-        <nav>
+        <nav aria-label="Main Navigation">
             <ul>
-                <li><a href="index.html">HOME</a></li>
+                <li><a href="index.html" aria-current="page">HOME</a></li>
                 <li>
-                    <a href="#">Archive</a>
-                    <ul>
+                    <a href="#" aria-haspopup="true">Archive</a>
+                    <ul aria-label="Archive Sections">
                         <li><a href="chemical-works.html">Chemical Works</a></li>
                         <li><a href="commentaries.html">Commentaries</a></li>
                         <li><a href="fringe.html">Fringe</a></li>
@@ -318,64 +332,66 @@
     </header>
 
     <main>
-        <section class="hero">
-            <h1>The Liminal Archive</h1>
-            <p>"There is a door by which we ascend and descend, and in the midst the void shines"<br>
-            – Enneads III.6.6</p>
+        <section class="hero" aria-labelledby="main-title">
+            <h1 id="main-title">The Liminal Archive</h1>
+            <p aria-describedby="quote-source">
+                "There is a door by which we ascend and descend, and in the midst the void shines"
+                <span id="quote-source">– Enneads III.6.6</span>
+            </p>
         </section>
 
         <section class="categories site-margin">
             <div class="category-item">
                 <a href="chemical-works.html">
-                    <img src="images/chem_tn.jpg" alt="Chemical Works">
+                    <img src="images/chem_tn.jpg" alt="Chemical Works" loading="lazy">
                     <p>Chemical Works</p>
                 </a>
             </div>
             <div class="category-item">
                 <a href="guest-contributions.html">
-                    <img src="images/guest_tn.jpg" alt="Guest Contributions">
+                    <img src="images/guest_tn.jpg" alt="Guest Contributions" loading="lazy">
                     <p>Guest Contributions</p>
                 </a>
             </div>
             <div class="category-item">
                 <a href="commentaries.html">
-                    <img src="images/commentaries_tn.jpg" alt="Commentaries">
+                    <img src="images/commentaries_tn.jpg" alt="Commentaries" loading="lazy">
                     <p>Commentaries</p>
                 </a>
             </div>
             <div class="category-item">
                 <a href="human-condition.html">
-                    <img src="images/human_tn.jpg" alt="Human Condition">
+                    <img src="images/human_tn.jpg" alt="Human Condition" loading="lazy">
                     <p>On the Human Condition</p>
                 </a>
             </div>
             <div class="category-item">
                 <a href="fringe.html">
-                    <img src="images/fringe_tn.jpg" alt="Fringe">
+                    <img src="images/fringe_tn.jpg" alt="Fringe" loading="lazy">
                     <p>On the Fringe</p>
                 </a>
             </div>
             <div class="category-item">
                 <a href="meditation.html">
-                    <img src="images/meditation_tn.jpg" alt="Meditation">
+                    <img src="images/meditation_tn.jpg" alt="Meditation" loading="lazy">
                     <p>On Meditation</p>
                 </a>
             </div>
             <div class="category-item">
                 <a href="mysticism.html">
-                    <img src="images/mysticism_tn.jpg" alt="Mysticism">
+                    <img src="images/mysticism_tn.jpg" alt="Mysticism" loading="lazy">
                     <p>On Mysticism</p>
                 </a>
             </div>
             <div class="category-item">
                 <a href="philosophy.html">
-                    <img src="images/phil_tn.jpg" alt="Philosophy">
+                    <img src="images/phil_tn.jpg" alt="Philosophy" loading="lazy">
                     <p>On Philosophy</p>
                 </a>
             </div>
             <div class="category-item">
                 <a href="psychotropics.html">
-                    <img src="images/psychotropics_tn.jpg" alt="Psychotropics">
+                    <img src="images/psychotropics_tn.jpg" alt="Psychotropics" loading="lazy">
                     <p>On Psychotropics</p>
                 </a>
             </div>
