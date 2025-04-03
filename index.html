@@ -40,6 +40,9 @@
             background-color: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
         }
 
         .site-margin {
@@ -75,6 +78,7 @@
             color: var(--text-primary);
             text-decoration: none;
             transition: color 0.3s ease;
+            font-family: 'Inknut Antiqua', serif;
         }
 
         nav a:hover {
@@ -103,35 +107,50 @@
             padding: 10px 20px;
         }
 
+        /* Hero Section Styling */
         .hero {
             position: relative;
-            height: 70vh;
-            min-height: 500px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            width: 100vw;
+            margin: 0;
+            padding: 0;
             text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),
-                        url('images/door_hero.jpg') center/contain no-repeat;
-            background-attachment: fixed;
-            color: #CCCCCC;
-            padding: 0 20px;
+            overflow: hidden;
         }
 
-        .hero h1 {
+        .hero-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain; /* Ensures no zooming or cropping */
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #CCCCCC;
+            padding: 0 20px;
+            /* Remove this line below */
+            background: transparent;
+        }
+
+        .hero-content h1 {
             font-family: 'Inknut Antiqua', serif;
             font-size: 49px;
             font-weight: 400;
-            letter-spacing: 0.49em;
+            letter-spacing: 0.49em; /* Keep your preferred spacing */
             margin-bottom: 20px;
             text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            color: #CCCCCC;
+            white-space: nowrap; /* Add this to prevent wrapping */
         }
 
-        .hero p {
+        .hero-content p {
             font-family: 'Inknut Antiqua', serif;
             font-size: 1rem;
-            max-width: 800px;
+            white-space: nowrap; /* Add this to prevent wrapping */
+            color: #CCCCCC;
         }
 
         .categories {
@@ -174,6 +193,7 @@
             padding: 15px;
             font-size: 1.4rem;
             color: var(--red);
+            font-family: 'Inknut Antiqua', serif;
             background-color: rgba(30, 30, 30, 0.7);
             height: 80px;
             margin: 0;
@@ -266,10 +286,10 @@
                 margin-right: 20px;
             }
 
-            .hero h1 {
+            .hero-content h1 {
                 font-size: 32px;
             }
-            .hero p {
+            .hero-content p {
                 font-size: 0.9rem;
             }
             nav ul {
@@ -328,11 +348,12 @@
 
     <main>
         <section class="hero" aria-labelledby="main-title">
-            <h1 id="main-title">The Liminal Archive</h1>
-            <p aria-describedby="quote-source">
-                "There is a door by which we ascend and descend, and in the midst the void shines"
-                <span id="quote-source">– Enneads III.6.6</span>
-            </p>
+            <img src="images/door_hero1.jpg" alt="Hero Image" class="hero-image">
+            <div class="hero-content">
+                <h1 id="main-title">The Liminal Archive</h1>
+                <p>"There is a door by which we ascend and descend, and in the midst the void shines"</p>
+                <p>– Enneads III.6.6</p>
+            </div>
         </section>
 
         <section class="categories site-margin">
