@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="On the Fringe - The Liminal Archive: Exploring the edges of knowledge and possibility">
     <title>On the Fringe | The Liminal Archive</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Preload Font -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@400;700&display=swap" as="style" onload="this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@400;700&display=swap" rel="stylesheet"></noscript>
+    
     <style>
         /* Dark Theme Reset */
         :root {
@@ -21,6 +25,7 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            transition: all 0.3s ease; /* Added from index.html */
         }
 
         body {
@@ -28,6 +33,7 @@
             background-color: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
+            overflow-x: hidden; /* Added from index.html */
         }
 
         .site-margin {
@@ -35,14 +41,15 @@
             margin-right: 170px;
         }
 
+        /* Menu Bar Styles from index.html */
         #SITE_HEADER {
-            background-color: #000000;
+            background-color: rgba(0, 0, 0, 0.9); /* Updated from #000000 */
             padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 100;
             backdrop-filter: blur(10px);
-            width: 100%;
+            width: 100vw; /* Updated from 100% */
             margin: 0;
         }
 
@@ -51,7 +58,15 @@
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            padding-left: 170px;
+            padding: 0; /* Updated from padding-left: 170px */
+            margin: 0;
+            width: 100%;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            margin-left: 170px;
         }
 
         nav li {
@@ -92,6 +107,15 @@
             padding: 10px 20px;
         }
 
+        .nav-registry a {
+            color: var(--red); /* Permanently red */
+        }
+
+        .nav-registry a:hover {
+            color: #808080; /* Grey on hover */
+        }
+
+        /* Original Styles for Fringe */
         .category-hero {
             position: relative;
             height: 50vh;
@@ -203,7 +227,12 @@
             }
             nav ul {
                 flex-direction: column;
-                padding: 10px 0;
+                padding: 10px 20px; /* Updated from 10px 0 */
+                margin: 0; /* Added from index.html */
+                width: 100%; /* Added from index.html */
+            }
+            .nav-left {
+                margin-left: 20px; /* Added for mobile */
             }
             nav ul ul {
                 position: static;
@@ -236,24 +265,28 @@
     </style>
 </head>
 <body>
+    <!-- Updated Menu Bar from index.html -->
     <header id="SITE_HEADER">
-        <nav>
+        <nav aria-label="Main Navigation">
             <ul>
-                <li><a href="index.html">HOME</a></li>
-                <li>
-                    <a href="#">Archive</a>
-                    <ul>
-                        <li><a href="chemical-works.html">Chemical Works</a></li>
-                        <li><a href="commentaries.html">Commentaries</a></li>
-                        <li><a href="fringe.html">Fringe</a></li>
-                        <li><a href="guest-contributions.html">Guest Contributions</a></li>
-                        <li><a href="human-condition.html">Human Condition</a></li>
-                        <li><a href="meditation.html">Meditation</a></li>
-                        <li><a href="mysticism.html">Mysticism</a></li>
-                        <li><a href="philosophy.html">Philosophy</a></li>
-                        <li><a href="psychotropics.html">Psychotropics</a></li>
-                    </ul>
-                </li>
+                <div class="nav-left">
+                    <li><a href="index.html">HOME</a></li>
+                    <li>
+                        <a href="#" aria-haspopup="true">Archive</a>
+                        <ul aria-label="Archive Sections">
+                            <li><a href="chemical-works.html">Chemical Works</a></li>
+                            <li><a href="commentaries.html">Commentaries</a></li>
+                            <li><a href="fringe.html" aria-current="page">Fringe</a></li>
+                            <li><a href="guest-contributions.html">Guest Contributions</a></li>
+                            <li><a href="human-condition.html">Human Condition</a></li>
+                            <li><a href="meditation.html">Meditation</a></li>
+                            <li><a href="mysticism.html">Mysticism</a></li>
+                            <li><a href="philosophy.html">Philosophy</a></li>
+                            <li><a href="psychotropics.html">Psychotropics</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-registry"><a href="registry.html">REGISTRVM QVAERENTIVM</a></li>
+                </div>
             </ul>
         </nav>
     </header>

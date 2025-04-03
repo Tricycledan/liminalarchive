@@ -13,9 +13,9 @@
     
     <title>The Liminal Archive</title>
     
-    <!-- Preload and Font Loading -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@400;700&display=swap" as="style">
-    <link href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@400;700&display=swap&font-display=swap" rel="stylesheet">
+    <!-- Preload Font -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@400;700&display=swap" as="style" onload="this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@400;700&display=swap" rel="stylesheet"></noscript>
     
     <style>
         /* Dark Theme Reset */
@@ -23,8 +23,6 @@
             --bg-primary: #1A1A1A;
             --bg-secondary: #1e1e1e;
             --text-primary: #A0A0A0;
-            --text-secondary: #b0b0b0;
-            --accent-color: #4a4a4a;
             --red: #A10129;
         }
 
@@ -57,7 +55,7 @@
             top: 0;
             z-index: 100;
             backdrop-filter: blur(10px);
-            width: 100%;
+            width: 100vw;
             margin: 0;
         }
 
@@ -66,7 +64,15 @@
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            padding-left: 170px;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            margin-left: 170px;
         }
 
         nav li {
@@ -107,6 +113,26 @@
             padding: 10px 20px;
         }
 
+        .nav-right {
+            margin-left: auto;
+            margin-right: 0;
+            padding-right: 20px;
+        }
+
+        .nav-right a {
+            font-weight: 400;
+            font-size: 12px;
+        }
+
+        /* Specific styling for REGISTRVM QVAERENTIVM */
+        .nav-registry a {
+            color: var(--red); /* Permanently red */
+        }
+
+        .nav-registry a:hover {
+            color: #808080; /* Grey on hover */
+        }
+
         /* Hero Section Styling */
         .hero {
             position: relative;
@@ -120,8 +146,9 @@
         .hero-image {
             width: 100%;
             height: auto;
+            max-height: 100vh;
             display: block;
-            object-fit: contain; /* Ensures no zooming or cropping */
+            object-fit: contain;
         }
 
         .hero-content {
@@ -131,7 +158,6 @@
             transform: translate(-50%, -50%);
             color: #CCCCCC;
             padding: 0 20px;
-            /* Remove this line below */
             background: transparent;
         }
 
@@ -139,28 +165,49 @@
             font-family: 'Inknut Antiqua', serif;
             font-size: 49px;
             font-weight: 400;
-            letter-spacing: 0.49em; /* Keep your preferred spacing */
+            letter-spacing: 0.49em;
             margin-bottom: 20px;
             text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
             color: #CCCCCC;
-            white-space: nowrap; /* Add this to prevent wrapping */
+            white-space: nowrap;
         }
 
         .hero-content p {
             font-family: 'Inknut Antiqua', serif;
             font-size: 1rem;
-            white-space: nowrap; /* Add this to prevent wrapping */
+            white-space: nowrap;
             color: #CCCCCC;
+        }
+
+        .hero-button {
+            display: inline-block;
+            padding: 15px 10px;
+            background-color: var(--red);
+            color: #fff;
+            font-size: 18px;
+            font-weight: 400;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 20px auto;
+            white-space: nowrap;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero-button:hover {
+            background-color: #85061f;
         }
 
         .categories {
             display: grid;
-            grid-template-columns: repeat(3, 270px);
-            grid-gap: 57px 73px;
-            justify-content: center;
+            grid-template-columns: repeat(3, 270px); /* 3 columns of 270px each */
+            grid-template-rows: repeat(3, auto); /* 3 rows */
+            grid-gap: 50px 70px; /* 50px vertical, 70px horizontal */
+            justify-content: center; /* Centers the grid horizontally */
             padding: 50px 0;
             max-width: 1100px;
             margin: 0 auto;
+            text-align: center;
         }
 
         .category-item {
@@ -214,9 +261,6 @@
         #recent-additions {
             background-color: var(--bg-secondary);
             padding: 50px 20px;
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -225,13 +269,15 @@
             font-family: 'Inknut Antiqua', serif;
             font-size: 56px;
             font-weight: 400;
-            text-align: left;
+            text-align: layout;
+            grid-column: 1;
         }
 
         .recent-items {
             display: flex;
             flex-direction: column;
             gap: 20px;
+            grid-column: 2;
         }
 
         .recent-item {
@@ -246,6 +292,7 @@
             margin-bottom: 10px;
             font-size: 20px;
             font-weight: 400;
+            text-decoration: none;
         }
 
         .recent-item p {
@@ -254,9 +301,15 @@
             font-weight: 400;
         }
 
+        #recent-additions .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 20px;
+        }
+
         #SITE_FOOTER {
-            background-color: #737373;
-            color: var(--text-primary);
+            background-color: #333333;
+            color: #FFFFFF;
             padding: 30px 20px;
             text-align: center;
         }
@@ -264,7 +317,7 @@
         #SITE_FOOTER .quote {
             font-size: 22px;
             font-weight: 400;
-            color: #000000;
+            color: #FFFFFF;
             letter-spacing: 0.45em;
             display: block;
             margin-bottom: 10px;
@@ -272,7 +325,7 @@
 
         #SITE_FOOTER .copyright {
             font-size: 14px;
-            color: #000000;
+            color: #FFFFFF;
             display: block;
             text-align: left;
             margin-left: 170px;
@@ -294,7 +347,12 @@
             }
             nav ul {
                 flex-direction: column;
-                padding: 10px 0;
+                padding: 10px 20px;
+                margin: 0;
+                width: 100%;
+            }
+            .nav-left {
+                margin-left: 20px;
             }
             nav ul ul {
                 position: static;
@@ -305,20 +363,28 @@
             nav li {
                 margin: 10px 0;
             }
+            .nav-right {
+                margin-left: 0;
+                padding-right: 0;
+            }
             .categories {
-                grid-template-columns: 1fr;
-                grid-gap: 20px;
+                grid-template-columns: 1fr; /* Single column on mobile */
+                grid-template-rows: auto; /* Reset rows for mobile */
+                grid-gap: 20px; /* Consistent gap on mobile */
             }
             .category-item {
                 width: 100%;
                 height: 400px;
             }
-            #recent-additions {
+            #recent-additions .content-wrapper {
                 grid-template-columns: 1fr;
             }
             #recent-additions h2 {
                 font-size: 40px;
                 text-align: center;
+            }
+            .hero-button {
+                margin: 20px auto;
             }
         }
     </style>
@@ -327,108 +393,113 @@
     <header id="SITE_HEADER">
         <nav aria-label="Main Navigation">
             <ul>
-                <li><a href="index.html" aria-current="page">HOME</a></li>
-                <li>
-                    <a href="#" aria-haspopup="true">Archive</a>
-                    <ul aria-label="Archive Sections">
-                        <li><a href="chemical-works.html">Chemical Works</a></li>
-                        <li><a href="commentaries.html">Commentaries</a></li>
-                        <li><a href="fringe.html">Fringe</a></li>
-                        <li><a href="guest-contributions.html">Guest Contributions</a></li>
-                        <li><a href="human-condition.html">Human Condition</a></li>
-                        <li><a href="meditation.html">Meditation</a></li>
-                        <li><a href="mysticism.html">Mysticism</a></li>
-                        <li><a href="philosophy.html">Philosophy</a></li>
-                        <li><a href="psychotropics.html">Psychotropics</a></li>
-                    </ul>
-                </li>
+                <div class="nav-left">
+                    <li><a href="index.html" aria-current="page">HOME</a></li>
+                    <li>
+                        <a href="#" aria-haspopup="true">Archive</a>
+                        <ul aria-label="Archive Sections">
+                            <li><a href="chemical-works.html">Chemical Works</a></li>
+                            <li><a href="commentaries.html">Commentaries</a></li>
+                            <li><a href="fringe.html">Fringe</a></li>
+                            <li><a href="guest-contributions.html">Guest Contributions</a></li>
+                            <li><a href="human-condition.html">Human Condition</a></li>
+                            <li><a href="meditation.html">Meditation</a></li>
+                            <li><a href="mysticism.html">Mysticism</a></li>
+                            <li><a href="philosophy.html">Philosophy</a></li>
+                            <li><a href="psychotropics.html">Psychotropics</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-registry"><a href="registry.html">REGISTRVM QVAERENTIVM</a></li>
+                </div>
             </ul>
         </nav>
     </header>
 
     <main>
         <section class="hero" aria-labelledby="main-title">
-            <img src="images/door_hero1.jpg" alt="Hero Image" class="hero-image">
+            <img src="images/door_hero1.jpg" alt="Hero Image" class="hero-image" width="1920" height="1080" loading="lazy">
             <div class="hero-content">
                 <h1 id="main-title">The Liminal Archive</h1>
-                <p>"There is a door by which we ascend and descend, and in the midst the void shines"</p>
-                <p>– Enneads III.6.6</p>
+                <p>"There is a door by which we ascend and descend, and in the midst the void shines"<br>– Enneads III.6.6</p>
             </div>
         </section>
 
         <section class="categories site-margin">
+            <!-- Row 1 -->
             <div class="category-item">
                 <a href="chemical-works.html">
-                    <img src="images/chem_tn.jpg" alt="Chemical Works" loading="lazy">
+                    <img src="images/chem_tn.jpg" alt="Chemical Works" width="270" height="343" loading="lazy">
                     <p>Chemical Works</p>
                 </a>
             </div>
             <div class="category-item">
-                <a href="guest-contributions.html">
-                    <img src="images/guest_tn.jpg" alt="Guest Contributions" loading="lazy">
-                    <p>Guest Contributions</p>
-                </a>
-            </div>
-            <div class="category-item">
                 <a href="commentaries.html">
-                    <img src="images/commentaries_tn.jpg" alt="Commentaries" loading="lazy">
+                    <img src="images/commentaries_tn.jpg" alt="Commentaries" width="270" height="343" loading="lazy">
                     <p>Commentaries</p>
                 </a>
             </div>
             <div class="category-item">
-                <a href="human-condition.html">
-                    <img src="images/human_tn.jpg" alt="Human Condition" loading="lazy">
-                    <p>On the Human Condition</p>
+                <a href="fringe.html">
+                    <img src="images/fringe_tn.jpg" alt="Fringe" width="270" height="343" loading="lazy">
+                    <p>Fringe</p>
+                </a>
+            </div>
+            <!-- Row 2 -->
+            <div class="category-item">
+                <a href="guest-contributions.html">
+                    <img src="images/guest_tn.jpg" alt="Guest Contributions" width="270" height="343" loading="lazy">
+                    <p>Guest Contributions</p>
                 </a>
             </div>
             <div class="category-item">
-                <a href="fringe.html">
-                    <img src="images/fringe_tn.jpg" alt="Fringe" loading="lazy">
-                    <p>On the Fringe</p>
+                <a href="human-condition.html">
+                    <img src="images/human_tn.jpg" alt="Human Condition" width="270" height="343" loading="lazy">
+                    <p>Human Condition</p>
                 </a>
             </div>
             <div class="category-item">
                 <a href="meditation.html">
-                    <img src="images/meditation_tn.jpg" alt="Meditation" loading="lazy">
-                    <p>On Meditation</p>
+                    <img src="images/meditation_tn.jpg" alt="Meditation" width="270" height="343" loading="lazy">
+                    <p>Meditation</p>
                 </a>
             </div>
+            <!-- Row 3 -->
             <div class="category-item">
                 <a href="mysticism.html">
-                    <img src="images/mysticism_tn.jpg" alt="Mysticism" loading="lazy">
-                    <p>On Mysticism</p>
+                    <img src="images/mysticism_tn.jpg" alt="Mysticism" width="270" height="343" loading="lazy">
+                    <p>Mysticism</p>
                 </a>
             </div>
             <div class="category-item">
                 <a href="philosophy.html">
-                    <img src="images/phil_tn.jpg" alt="Philosophy" loading="lazy">
-                    <p>On Philosophy</p>
+                    <img src="images/phil_tn.jpg" alt="Philosophy" width="270" height="343" loading="lazy">
+                    <p>Philosophy</p>
                 </a>
             </div>
             <div class="category-item">
                 <a href="psychotropics.html">
-                    <img src="images/psychotropics_tn.jpg" alt="Psychotropics" loading="lazy">
-                    <p>On Psychotropics</p>
+                    <img src="images/psychotropics_tn.jpg" alt="Psychotropics" width="270" height="343" loading="lazy">
+                    <p>Psychotropics</p>
                 </a>
             </div>
         </section>
 
         <section id="recent-additions" class="site-margin">
-            <h2>Recent Additions</h2>
-            <div class="recent-items">
-                <div class="recent-item">
-                    <h5>1 / Item Title</h5>
-                    <p>Describe the item and include any relevant details.</p>
-                </div>
-                <div class="recent-item">
-                    <h5>2 / Item Title</h5>
-                    <p>Describe the item and include any relevant details.</p>
-                </div>
-                <div class="recent-item">
-                    <h5>3 / Item Title</h5>
-                    <p>Describe the item and include any relevant details.</p>
+            <div class="content-wrapper">
+                <h2>Recent Additions</h2>
+                <div class="recent-items">
+                    <div class="recent-item">
+                        <h5>Article 1</h5>
+                        <p>A brief description of the article content...</p>
+                    </div>
+                    <div class="recent-item">
+                        <h5>Article 2</h5>
+                        <p>A brief description of the article content...</p>
+                    </div>
+                    <!-- Add more recent items as needed -->
                 </div>
             </div>
+            <a href="registry.html" class="hero-button">Get Notified of New Additions</a>
         </section>
     </main>
 
