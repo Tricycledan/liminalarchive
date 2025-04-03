@@ -21,6 +21,7 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            transition: all 0.3s ease; /* Added from Fringe */
         }
 
         body {
@@ -28,6 +29,7 @@
             background-color: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
+            overflow-x: hidden; /* Added from Fringe */
         }
 
         .site-margin {
@@ -35,14 +37,15 @@
             margin-right: 170px;
         }
 
+        /* Menu Bar Styles from Fringe */
         #SITE_HEADER {
-            background-color: #000000;
+            background-color: rgba(0, 0, 0, 0.9); /* Updated from #000000 */
             padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 100;
             backdrop-filter: blur(10px);
-            width: 100%;
+            width: 100vw; /* Updated from 100% */
             margin: 0;
         }
 
@@ -51,7 +54,15 @@
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            padding-left: 170px;
+            padding: 0; /* Updated from padding-left: 170px */
+            margin: 0;
+            width: 100%;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            margin-left: 170px;
         }
 
         nav li {
@@ -92,6 +103,15 @@
             padding: 10px 20px;
         }
 
+        .nav-registry a {
+            color: var(--red); /* Permanently red */
+        }
+
+        .nav-registry a:hover {
+            color: #808080; /* Grey on hover */
+        }
+
+        /* Original Human Condition Styles */
         .category-hero {
             position: relative;
             height: 50vh;
@@ -203,7 +223,12 @@
             }
             nav ul {
                 flex-direction: column;
-                padding: 10px 0;
+                padding: 10px 20px; /* Updated from 10px 0, matches Fringe */
+                margin: 0; /* Added from Fringe */
+                width: 100%; /* Added from Fringe */
+            }
+            .nav-left {
+                margin-left: 20px; /* Added for mobile, from Fringe */
             }
             nav ul ul {
                 position: static;
@@ -236,24 +261,28 @@
     </style>
 </head>
 <body>
+    <!-- Menu Bar from Fringe -->
     <header id="SITE_HEADER">
-        <nav>
+        <nav aria-label="Main Navigation">
             <ul>
-                <li><a href="index.html">HOME</a></li>
-                <li>
-                    <a href="#">Archive</a>
-                    <ul>
-                        <li><a href="chemical-works.html">Chemical Works</a></li>
-                        <li><a href="commentaries.html">Commentaries</a></li>
-                        <li><a href="fringe.html">Fringe</a></li>
-                        <li><a href="guest-contributions.html">Guest Contributions</a></li>
-                        <li><a href="human-condition.html">Human Condition</a></li>
-                        <li><a href="meditation.html">Meditation</a></li>
-                        <li><a href="mysticism.html">Mysticism</a></li>
-                        <li><a href="philosophy.html">Philosophy</a></li>
-                        <li><a href="psychotropics.html">Psychotropics</a></li>
-                    </ul>
-                </li>
+                <div class="nav-left">
+                    <li><a href="index.html">HOME</a></li>
+                    <li>
+                        <a href="#" aria-haspopup="true">Archive</a>
+                        <ul aria-label="Archive Sections">
+                            <li><a href="chemical-works.html">Chemical Works</a></li>
+                            <li><a href="commentaries.html">Commentaries</a></li>
+                            <li><a href="fringe.html">Fringe</a></li>
+                            <li><a href="guest-contributions.html">Guest Contributions</a></li>
+                            <li><a href="human-condition.html" aria-current="page">Human Condition</a></li>
+                            <li><a href="meditation.html">Meditation</a></li>
+                            <li><a href="mysticism.html">Mysticism</a></li>
+                            <li><a href="philosophy.html">Philosophy</a></li>
+                            <li><a href="psychotropics.html">Psychotropics</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-registry"><a href="registry.html">REGISTRVM QVAERENTIVM</a></li>
+                </div>
             </ul>
         </nav>
     </header>
@@ -263,7 +292,7 @@
 
         <section class="title-section site-margin">
             <div class="quote">
-                <em>"Beyond  right and wrong, there is a field. I’ll meet you there."</em>
+                <em>"Beyond right and wrong, there is a field. I’ll meet you there."</em>
             </div>
             <div class="attribution">
                 <em>- Rumi</em>

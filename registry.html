@@ -7,7 +7,7 @@
     <title>Registry | The Liminal Archive</title>
     <link href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Dark Theme Reset */
+        /* Dark Theme Reset (Copied from On Meditation) */
         :root {
             --bg-primary: #1A1A1A;
             --bg-secondary: #1e1e1e;
@@ -21,6 +21,7 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            transition: all 0.3s ease; /* Matching Fringe */
         }
 
         body {
@@ -28,6 +29,7 @@
             background-color: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
+            overflow-x: hidden; /* Matching Fringe */
         }
 
         .site-margin {
@@ -35,14 +37,16 @@
             margin-right: 170px;
         }
 
+        /* Menu Bar Styles (Copied from On Meditation) */
         #SITE_HEADER {
-            background-color: #000000;
+            background-color: rgba(0, 0, 0, 0.9); /* Matching Fringe */
             padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 100;
             backdrop-filter: blur(10px);
-            width: 100%;
+            width: 100vw; /* Matching Fringe */
+            margin: 0;
         }
 
         nav ul {
@@ -50,7 +54,15 @@
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            padding-left: 170px;
+            padding: 0; /* Matching Fringe */
+            margin: 0;
+            width: 100%;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            margin-left: 170px; /* Matching Fringe */
         }
 
         nav li {
@@ -62,13 +74,45 @@
             color: var(--text-primary);
             text-decoration: none;
             transition: color 0.3s ease;
-            font-family: 'Inknut Antiqua', serif;
+            font-family: 'Inknut Antiqua', serif; /* Explicitly matching Fringe */
+            /* No font-size specified, matching Fringe's default */
         }
 
         nav a:hover {
             color: var(--red);
         }
 
+        nav ul ul {
+            display: none;
+            position: absolute;
+            background-color: var(--bg-secondary);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            border-radius: 4px;
+            padding: 10px 0;
+            top: 100%;
+            left: 0;
+        }
+
+        nav li:hover > ul {
+            display: block;
+            z-index: 101;
+        }
+
+        nav ul ul li {
+            margin: 0;
+            padding: 10px 20px;
+        }
+
+        .nav-registry a {
+            color: var(--red); /* Matching Fringe */
+        }
+
+        .nav-registry a:hover {
+            color: #808080; /* Matching Fringe */
+        }
+
+        /* Your Original Registry Styles (or any other styles you want) */
         .category-hero {
             position: relative;
             height: 50vh;
@@ -120,14 +164,62 @@
             text-align: left;
             margin-left: 170px;
         }
+
+        @media (max-width: 768px) {
+            .site-margin {
+                margin-left: 20px;
+                margin-right: 20px;
+            }
+            nav ul {
+                flex-direction: column;
+                padding: 10px 20px; /* Matching Fringe */
+                margin: 0; /* Added from Fringe */
+                width: 100%; /* Added from Fringe */
+            }
+            .nav-left {
+                margin-left: 20px; /* Added for mobile, from Fringe */
+            }
+            nav ul ul {
+                position: static;
+                box-shadow: none;
+                background-color: var(--bg-primary);
+                padding: 0;
+            }
+            nav li {
+                margin: 10px 0;
+            }
+            .title-section h1 {
+                font-size: 40px;
+            }
+            #SITE_FOOTER .copyright {
+                margin-left: 0;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>
     <header id="SITE_HEADER">
-        <nav>
+        <nav aria-label="Main Navigation">
             <ul>
-                <li><a href="index.html">HOME</a></li>
-                <li><a href="registry.html">Registry</a></li>
+                <div class="nav-left">
+                    <li><a href="index.html">HOME</a></li>
+                    <li>
+                        <a href="#" aria-haspopup="true">Archive</a>
+                        <ul aria-label="Archive Sections">
+                            <li><a href="chemical-works.html">Chemical Works</a></li>
+                            <li><a href="commentaries.html">Commentaries</a></li>
+                            <li><a href="fringe.html">Fringe</a></li>
+                            <li><a href="guest-contributions.html">Guest Contributions</a></li>
+                            <li><a href="human-condition.html">Human Condition</a></li>
+                            <li><a href="meditation.html">Meditation</a></li>
+                            <li><a href="mysticism.html">Mysticism</a></li>
+                            <li><a href="philosophy.html">Philosophy</a></li>
+                            <li><a href="psychotropics.html">Psychotropics</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-registry"><a href="registry.html" aria-current="page">REGISTRVM QVAERENTIVM</a></li>
+                </div>
             </ul>
         </nav>
     </header>
