@@ -42,13 +42,13 @@
 
         /* Menu Bar Styles from Fringe */
         #SITE_HEADER {
-            background-color: rgba(0, 0, 0, 0.9); /* Matching Fringe */
+            background-color: rgba(0, 0, 0, 0.9);
             padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 100;
             backdrop-filter: blur(10px);
-            width: 100vw; /* Matching Fringe */
+            width: 100vw;
             margin: 0;
         }
 
@@ -57,7 +57,7 @@
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            padding: 0; /* Matching Fringe */
+            padding: 0;
             margin: 0;
             width: 100%;
         }
@@ -65,7 +65,7 @@
         .nav-left {
             display: flex;
             align-items: center;
-            margin-left: 170px; /* Matching Fringe */
+            margin-left: 170px;
         }
 
         nav li {
@@ -77,8 +77,7 @@
             color: var(--text-primary);
             text-decoration: none;
             transition: color 0.3s ease;
-            font-family: 'Inknut Antiqua', serif; /* Matching Fringe */
-            /* No font-size specified, matching Fringe's default */
+            font-family: 'Inknut Antiqua', serif;
         }
 
         nav a:hover {
@@ -108,20 +107,20 @@
         }
 
         .nav-registry a {
-            color: var(--red); /* Matching Fringe */
+            color: var(--red);
         }
 
         .nav-registry a:hover {
-            color: #808080; /* Matching Fringe */
+            color: #808080;
         }
 
-        /* Styles for the rest of the page - Matching the "On Meditation" page */
+        /* Styles for the rest of the page */
         .category-hero {
             position: relative;
             height: 50vh;
             min-height: 400px;
             background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),
-                        url('images/mysticism_header.jpg') center 80% / cover no-repeat; /* Using meditation header */
+                        url('images/mysticism_header.jpg') center 80% / cover no-repeat;
             background-attachment: fixed;
         }
 
@@ -194,6 +193,18 @@
             transform: translateY(-50%);
             width: 80px;
             height: auto;
+            transition: opacity 0.3s ease; /* Specific transition */
+            cursor: pointer; /* Pointer cursor */
+        }
+
+        .pdf-link {
+            display: block;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .pdf-link:hover .pdf-icon {
+            opacity: 0.7; /* Fade on hover */
         }
 
         #SITE_FOOTER {
@@ -227,12 +238,12 @@
             }
             nav ul {
                 flex-direction: column;
-                padding: 10px 20px; /* Matching Fringe */
-                margin: 0; /* Added from Fringe */
-                width: 100%; /* Added from Fringe */
+                padding: 10px 20px;
+                margin: 0;
+                width: 100%;
             }
             .nav-left {
-                margin-left: 20px; /* Added for mobile, from Fringe */
+                margin-left: 20px;
             }
             nav ul ul {
                 position: static;
@@ -254,12 +265,8 @@
                 font-size: 16px;
                 max-width: 400px;
             }
-            .publications h2 {
-                font-size: 28px;
-                text-align: center;
-            }
             .publication-box .pdf-icon {
-                width: 64px;
+                width: 64px; /* Adjust size for mobile */
             }
             #SITE_FOOTER .copyright {
                 margin-left: 0;
@@ -312,20 +319,13 @@
 
         <section class="publications site-margin">
             <div class="publication-box">
-                <h5>1 / Publication Title</h5>
-                <p>Describe the publication and include any relevant details.</p>
-                <img src="images/pdf-icon.png" alt="PDF" class="pdf-icon">
-            </div>
-            <div class="publication-box">
-                <h5>2 / Publication Title</h5>
-                <p>Describe the publication and include any relevant details.</p>
-                <img src="images/pdf-icon.png" alt="PDF" class="pdf-icon">
-            </div>
-            <div class="publication-box">
-                <h5>3 / Publication Title</h5>
-                <p>Describe the publication and include any relevant details.</p>
-                <img src="images/pdf-icon.png" alt="PDF" class="pdf-icon">
-            </div>
+                <h5>The Ritual: A Symbiosis</h5>
+                <p>[Tractus] <i>The Ritual Series</i>.</p>
+                <p>Spring 2025</p>
+                <a href="pdfs/TricycleDan_Ritual1.pdf" target="_blank" class="pdf-link">
+                    <img src="images/pdf-icon.png" alt="Download PDF" class="pdf-icon">
+                </a>
+            </div>  
         </section>
     </main>
 
