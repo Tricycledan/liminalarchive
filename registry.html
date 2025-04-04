@@ -227,11 +227,37 @@
     <main>
         <section class="category-hero"></section>
         <section class="title-section site-margin">
-            <h1>Registry</h1>
+            <h1>Register of the Seekers</h1>
             <div class="description">
-                A catalog of knowledge and experience.
+              Sign up to receive updates on new entries from The Liminal Archive
             </div>
+          
+            <form id="subscribeForm" style="margin-top: 20px;">
+              <input type="email" id="emailInput" placeholder="Enter your email" required>
+              <button type="submit">Subscribe</button>
+            </form>
+          
+            <p id="message" style="margin-top: 10px;"></p>
         </section>
+          
+        <script>
+            document.getElementById("subscribeForm").addEventListener("submit", async function(event) {
+              event.preventDefault(); // Prevent page refresh
+          
+              const email = document.getElementById("emailInput").value;
+          
+              const response = await fetch("http://localhost:3000/subscribe", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email })
+              });
+          
+              const data = await response.json();
+              document.getElementById("message").innerText = data.message;
+            });
+        </script>
+          
+              
     </main>
 
     <footer id="SITE_FOOTER">
