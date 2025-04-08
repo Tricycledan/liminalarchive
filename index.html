@@ -280,25 +280,48 @@
             grid-column: 2;
         }
 
-        .recent-item {
+        .publication-box {
             padding: 20px;
             background-color: #333333;
             border-radius: 8px;
+            margin-bottom: 20px;
+            position: relative;
         }
 
-        .recent-item h5 {
+        .publication-box h5 {
             font-family: 'Inknut Antiqua', serif;
             color: var(--red);
             margin-bottom: 10px;
             font-size: 20px;
             font-weight: 400;
-            text-decoration: none;
         }
 
-        .recent-item p {
+        .publication-box p {
             font-family: 'Inknut Antiqua', serif;
             font-size: 14px;
             font-weight: 400;
+            color: #CCCCCC;
+        }
+
+        .publication-box .pdf-icon {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            width: 80px;
+            height: auto;
+            transition: opacity 0.3s ease;
+            cursor: pointer;
+        }
+
+        .pdf-link {
+            display: block;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .pdf-link:hover .pdf-icon {
+            opacity: 0.7;
         }
 
         #recent-additions .content-wrapper {
@@ -420,7 +443,7 @@
             <img src="images/door_hero1.jpg" alt="Hero Image" class="hero-image" width="1920" height="1080" loading="lazy">
             <div class="hero-content">
                 <h1 id="main-title">The Liminal Archive</h1>
-                <p>"There is a door by which we ascend and descend, and in the midst the void shines"<br>– Enneads III.6.6</p>
+                <p>"There is a door by which we ascend and descend, and in the midst the void shines"<br>Enneads III.6.6</p>
             </div>
         </section>
 
@@ -488,15 +511,13 @@
             <div class="content-wrapper">
                 <h2>Recent Additions</h2>
                 <div class="recent-items">
-                    <div class="recent-item">
-                        <h5>Article 1</h5>
-                        <p>A brief description of the article content...</p>
+                    <div class="publication-box">
+                        <h5>The Ritual: A Symbiosis</h5>
+                        <p>[Mysticism]<i>The Ritual Series</i>.</p>
+                        <a href="pdfs/TricycleDan_Ritual1.pdf" target="_blank" class="pdf-link">
+                            <img src="images/pdf-icon.png" alt="Download PDF" class="pdf-icon">
+                        </a>
                     </div>
-                    <div class="recent-item">
-                        <h5>Article 2</h5>
-                        <p>A brief description of the article content...</p>
-                    </div>
-                    <!-- Add more recent items as needed -->
                 </div>
             </div>
             <a href="registry.html" class="hero-button">Get Notified of New Additions</a>

@@ -1,0 +1,265 @@
+/* styles.css */
+
+/* Dark Theme Reset */
+:root {
+    --bg-primary: #1A1A1A;
+    --bg-secondary: #1e1e1e;
+    --text-primary: #A0A0A0;
+    --text-secondary: #b0b0b0;
+    --accent-color: #4a4a4a;
+    --red: #A10129;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition: all 0.3s ease; /* Matching Fringe */
+}
+
+body {
+    font-family: 'Inknut Antiqua', serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden; /* Matching Fringe */
+}
+
+.site-margin {
+    margin-left: 170px;
+    margin-right: 170px;
+}
+
+/* Menu Bar Styles from Fringe */
+#SITE_HEADER {
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+    width: 100vw;
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    margin-left: 170px;
+}
+
+nav li {
+    position: relative;
+    margin: 0 20px;
+}
+
+nav a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-family: 'Inknut Antiqua', serif;
+}
+
+nav a:hover {
+    color: var(--red);
+}
+
+nav ul ul {
+    display: none;
+    position: absolute;
+    background-color: var(--bg-secondary);
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    border-radius: 4px;
+    padding: 10px 0;
+    top: 100%;
+    left: 0;
+}
+
+nav li:hover > ul {
+    display: block;
+    z-index: 101;
+}
+
+nav ul ul li {
+    margin: 0;
+    padding: 10px 20px;
+}
+
+.nav-registry a {
+    color: var(--red);
+}
+
+.nav-registry a:hover {
+    color: #808080;
+}
+
+/* Styles for the rest of the page */
+.category-hero {
+    position: relative;
+    height: 50vh;
+    min-height: 400px;
+    background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),
+                url('images/mysticism_header.jpg') center 80% / cover no-repeat;
+    background-attachment: fixed;
+}
+
+.title-section {
+    padding: 20px 0 50px 0;
+    text-align: center;
+}
+
+.title-section .quote {
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-primary);
+    margin-bottom: 1em;
+}
+
+.title-section .attribution {
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-primary);
+    margin-bottom: 3em;
+}
+
+.title-section h1 {
+    font-size: 56px;
+    font-weight: 400;
+    color: var(--red);
+    margin-bottom: 0.5em;
+}
+
+.title-section .description {
+    font-size: 18px;
+    color: var(--text-primary);
+    margin-bottom: 0.5em;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.publications {
+    padding: 0 0 50px 0;
+}
+
+.publication-box {
+    padding: 20px;
+    background-color: #333333;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.publication-box h5 {
+    font-family: 'Inknut Antiqua', serif;
+    color: var(--red);
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.publication-box p {
+    font-family: 'Inknut Antiqua', serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #CCCCCC;
+}
+
+.publication-box .pdf-icon {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    width: 80px;
+    height: auto;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+}
+
+.pdf-link {
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.pdf-link:hover .pdf-icon {
+    opacity: 0.7;
+}
+
+#SITE_FOOTER {
+    background-color: #737373;
+    color: var(--text-primary);
+    padding: 30px 20px;
+    text-align: center;
+}
+
+#SITE_FOOTER .quote {
+    font-size: 22px;
+    font-weight: 400;
+    color: #000000;
+    letter-spacing: 0.45em;
+    display: block;
+    margin-bottom: 10px;
+}
+
+#SITE_FOOTER .copyright {
+    font-size: 14px;
+    color: #000000;
+    display: block;
+    text-align: left;
+    margin-left: 170px;
+}
+
+@media (max-width: 768px) {
+    .site-margin {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    nav ul {
+        flex-direction: column;
+        padding: 10px 20px;
+        margin: 0;
+        width: 100%;
+    }
+    .nav-left {
+        margin-left: 20px;
+    }
+    nav ul ul {
+        position: static;
+        box-shadow: none;
+        background-color: var(--bg-primary);
+        padding: 0;
+    }
+    nav li {
+        margin: 10px 0;
+    }
+    .category-hero {
+        height: 40vh;
+        min-height: 300px;
+    }
+    .title-section h1 {
+        font-size: 40px;
+    }
+    .title-section .description {
+        font-size: 16px;
+        max-width: 400px;
+    }
+    .publication-box .pdf-icon {
+        width: 64px;
+    }
+    #SITE_FOOTER .copyright {
+        margin-left: 0;
+        text-align: center;
+    }
+}

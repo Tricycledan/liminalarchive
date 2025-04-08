@@ -7,7 +7,6 @@
     <title>Registry | The Liminal Archive</title>
     <link href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Dark Theme Reset (Copied from On Meditation) */
         :root {
             --bg-primary: #1A1A1A;
             --bg-secondary: #1e1e1e;
@@ -16,72 +15,60 @@
             --accent-color: #4a4a4a;
             --red: #A10129;
         }
-
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            transition: all 0.3s ease; /* Matching Fringe */
+            transition: all 0.3s ease;
         }
-
         body {
             font-family: 'Inknut Antiqua', serif;
             background-color: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
-            overflow-x: hidden; /* Matching Fringe */
+            overflow-x: hidden;
         }
-
         .site-margin {
             margin-left: 170px;
             margin-right: 170px;
         }
-
-        /* Menu Bar Styles (Copied from On Meditation) */
         #SITE_HEADER {
-            background-color: rgba(0, 0, 0, 0.9); /* Matching Fringe */
+            background-color: rgba(0, 0, 0, 0.9);
             padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 100;
             backdrop-filter: blur(10px);
-            width: 100vw; /* Matching Fringe */
+            width: 100vw;
             margin: 0;
         }
-
         nav ul {
             list-style: none;
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            padding: 0; /* Matching Fringe */
+            padding: 0;
             margin: 0;
             width: 100%;
         }
-
         .nav-left {
             display: flex;
             align-items: center;
-            margin-left: 170px; /* Matching Fringe */
+            margin-left: 170px;
         }
-
         nav li {
             position: relative;
             margin: 0 20px;
         }
-
         nav a {
             color: var(--text-primary);
             text-decoration: none;
             transition: color 0.3s ease;
-            font-family: 'Inknut Antiqua', serif; /* Explicitly matching Fringe */
-            /* No font-size specified, matching Fringe's default */
+            font-family: 'Inknut Antiqua', serif;
         }
-
         nav a:hover {
             color: var(--red);
         }
-
         nav ul ul {
             display: none;
             position: absolute;
@@ -93,26 +80,20 @@
             top: 100%;
             left: 0;
         }
-
         nav li:hover > ul {
             display: block;
             z-index: 101;
         }
-
         nav ul ul li {
             margin: 0;
             padding: 10px 20px;
         }
-
         .nav-registry a {
-            color: var(--red); /* Matching Fringe */
+            color: var(--red);
         }
-
         .nav-registry a:hover {
-            color: #808080; /* Matching Fringe */
+            color: #808080;
         }
-
-        /* Your Original Registry Styles (or any other styles you want) */
         .category-hero {
             position: relative;
             height: 50vh;
@@ -121,33 +102,28 @@
                         url('images/registry_header.jpg') center 80% / cover no-repeat;
             background-attachment: fixed;
         }
-
         .title-section {
             padding: 20px 0 50px 0;
             text-align: center;
         }
-
         .title-section h1 {
             font-size: 56px;
             font-weight: 400;
             color: var(--red);
             margin-bottom: 0.5em;
         }
-
         .title-section .description {
             font-size: 18px;
             color: var(--text-primary);
             max-width: 600px;
             margin: 0 auto;
         }
-
         #SITE_FOOTER {
             background-color: #737373;
             color: var(--text-primary);
             padding: 30px 20px;
             text-align: center;
         }
-
         #SITE_FOOTER .quote {
             font-size: 22px;
             font-weight: 400;
@@ -156,7 +132,6 @@
             display: block;
             margin-bottom: 10px;
         }
-
         #SITE_FOOTER .copyright {
             font-size: 14px;
             color: #000000;
@@ -164,7 +139,6 @@
             text-align: left;
             margin-left: 170px;
         }
-
         @media (max-width: 768px) {
             .site-margin {
                 margin-left: 20px;
@@ -172,12 +146,12 @@
             }
             nav ul {
                 flex-direction: column;
-                padding: 10px 20px; /* Matching Fringe */
-                margin: 0; /* Added from Fringe */
-                width: 100%; /* Added from Fringe */
+                padding: 10px 20px;
+                margin: 0;
+                width: 100%;
             }
             .nav-left {
-                margin-left: 20px; /* Added for mobile, from Fringe */
+                margin-left: 20px;
             }
             nav ul ul {
                 position: static;
@@ -229,35 +203,42 @@
         <section class="title-section site-margin">
             <h1>Register of the Seekers</h1>
             <div class="description">
-              Sign up to receive updates on new entries from The Liminal Archive
+                Sign up to receive updates on new entries from The Liminal Archive
             </div>
-          
+            
             <form id="subscribeForm" style="margin-top: 20px;">
-              <input type="email" id="emailInput" placeholder="Enter your email" required>
-              <button type="submit">Subscribe</button>
+                <input type="email" id="emailInput" name="email" placeholder="Enter your email" required style="padding: 5px; margin-right: 10px;">
+                <button type="submit" style="padding: 5px 10px;">Subscribe</button>
             </form>
-          
+            
             <p id="message" style="margin-top: 10px;"></p>
         </section>
-          
+        
         <script>
             document.getElementById("subscribeForm").addEventListener("submit", async function(event) {
-              event.preventDefault(); // Prevent page refresh
-          
-              const email = document.getElementById("emailInput").value;
-          
-              const response = await fetch("http://localhost:3000/subscribe", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email })
-              });
-          
-              const data = await response.json();
-              document.getElementById("message").innerText = data.message;
+                event.preventDefault();
+
+                const email = document.getElementById("emailInput").value;
+
+                try {
+                    const response = await fetch("http://localhost:3000/subscribe", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ email })
+                    });
+
+                    const data = await response.json();
+                    document.getElementById("message").innerText = data.message;
+
+                    if (response.ok) {
+                        document.getElementById("subscribeForm").reset();
+                    }
+                } catch (error) {
+                    document.getElementById("message").innerText = "Error connecting to server!";
+                    console.error("Fetch error:", error);
+                }
             });
         </script>
-          
-              
     </main>
 
     <footer id="SITE_FOOTER">
