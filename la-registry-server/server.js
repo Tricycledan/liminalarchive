@@ -12,7 +12,7 @@ const supabase = createClient(
   'https://vtglocuqezepsnxtkhcz.supabase.co',
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ0Z2xvY3VxZXplcHNueHRraGN6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDM4MjgxNTMsImV4cCI6MjA1OTQwNDE1M30.kPP9okclJLnXzrHZH3-kD79pN_gU8N16nxyquP0IxWE'
 );
-const RECAPTCHA_SECRET = 'YOUR_V3_SECRET_KEY'; // Replace with your v3 Secret Key
+const RECAPTCHA_SECRET = '6LdwVhErAAAAAK5abtIevothX6hXvjKu8Bv58cSD'; // Replace with your v3 Secret Key
 
 app.post('/subscribe', async (req, res) => {
   const { email, token } = req.body; // Extract both email and token

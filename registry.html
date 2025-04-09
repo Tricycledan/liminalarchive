@@ -229,7 +229,7 @@
           
               try {
                 // Get v3 token
-                const token = await grecaptcha.execute('YOUR_V3_SITE_KEY', { action: 'subscribe' });
+                const token = await grecaptcha.execute('6LdwVhErAAAAAM50oQ7YFvRvzSz56CetAsCDHxDz', { action: 'subscribe' });
                 const response = await fetch("https://la-registry-server.onrender.com/subscribe", {
                   method: "POST",
                   headers: { "Content-Type": "application/json" },
