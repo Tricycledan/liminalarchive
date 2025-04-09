@@ -219,6 +219,10 @@
               event.preventDefault();
           
               const email = document.getElementById("emailInput").value;
+              const messageElement = document.getElementById("message");
+          
+              // Show "Submitting..." when the request starts
+              messageElement.innerText = "Submitting...";
           
               try {
                 const response = await fetch("https://la-registry-server.onrender.com/subscribe", {
@@ -228,13 +232,13 @@
                 });
           
                 const data = await response.json();
-                document.getElementById("message").innerText = data.message;
+                messageElement.innerText = data.message;
           
                 if (response.ok) {
                   document.getElementById("subscribeForm").reset();
                 }
               } catch (error) {
-                document.getElementById("message").innerText = "Error connecting to server!";
+                messageElement.innerText = "Error connecting to server!";
                 console.error("Fetch error:", error);
               }
             });
