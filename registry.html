@@ -216,29 +216,29 @@
         
         <script>
             document.getElementById("subscribeForm").addEventListener("submit", async function(event) {
-                event.preventDefault();
-
-                const email = document.getElementById("emailInput").value;
-
-                try {
-                    const response = await fetch("http://localhost:3000/subscribe", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ email })
-                    });
-
-                    const data = await response.json();
-                    document.getElementById("message").innerText = data.message;
-
-                    if (response.ok) {
-                        document.getElementById("subscribeForm").reset();
-                    }
-                } catch (error) {
-                    document.getElementById("message").innerText = "Error connecting to server!";
-                    console.error("Fetch error:", error);
+              event.preventDefault();
+          
+              const email = document.getElementById("emailInput").value;
+          
+              try {
+                const response = await fetch("https://la-registry-server.onrender.com", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ email })
+                });
+          
+                const data = await response.json();
+                document.getElementById("message").innerText = data.message;
+          
+                if (response.ok) {
+                  document.getElementById("subscribeForm").reset();
                 }
+              } catch (error) {
+                document.getElementById("message").innerText = "Error connecting to server!";
+                console.error("Fetch error:", error);
+              }
             });
-        </script>
+          </script>
     </main>
 
     <footer id="SITE_FOOTER">
