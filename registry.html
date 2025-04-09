@@ -221,8 +221,9 @@
               const email = document.getElementById("emailInput").value;
               const messageElement = document.getElementById("message");
           
-              // Show "Submitting..." when the request starts
+              // Show "Submitting..." and wait 1 second
               messageElement.innerText = "Submitting...";
+              await new Promise(resolve => setTimeout(resolve, 1000)); // 1-second delay
           
               try {
                 const response = await fetch("https://la-registry-server.onrender.com/subscribe", {
