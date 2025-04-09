@@ -221,7 +221,7 @@
               const email = document.getElementById("emailInput").value;
           
               try {
-                const response = await fetch("https://la-registry-server.onrender.com", {
+                const response = await fetch("https://la-registry-server.onrender.com/submit", {
                   method: "POST",
                   headers: { "Content-Type": "application/json" },
                   body: JSON.stringify({ email })
