@@ -448,21 +448,39 @@
     </footer>
 
     <script>
-        fetch("titles.json")
-            .then(response => response.json())
+        // Debugging: Log when script starts
+        console.log("Search script started");
+        fetch("/titles.json")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
             .then(data => {
+                console.log("titles.json loaded successfully:", data); // Debug: Log the data
+
                 const searchBar = document.getElementById('searchBar');
                 const searchButton = document.getElementById('searchButton');
                 const resultsDiv = document.getElementById('searchResults');
 
+                // Check if elements exist
+                if (!searchBar || !searchButton || !resultsDiv) {
+                    console.error("One or more elements not found:", { searchBar, searchButton, resultsDiv });
+                    return;
+                }
+
+                console.log("Search elements found"); // Debug: Confirm elements
                 function performSearch() {
                     const searchTerm = searchBar.value.toLowerCase();
                     resultsDiv.innerHTML = '';
+                    console.log("Searching for:", searchTerm); // Debug: Log search term
 
                     if (searchTerm.length > 0) {
                         const matches = data.filter(doc => 
                             doc.title.toLowerCase().includes(searchTerm)
                         );
+                        console.log("Matches found:", matches); // Debug: Log matches
 
                         if (matches.length > 0) {
                             matches.forEach(match => {
@@ -478,14 +496,18 @@
                 }
 
                 // Show results as you type
-                searchBar.addEventListener('input', performSearch);
+                searchBar.addEventListener('input', () => {
+                    console.log("Input event triggered"); // Debug: Confirm input
+                    performSearch();
+                });
 
-                // Also trigger search on button click
+                // Trigger search on button click
                 searchButton.addEventListener('click', performSearch);
 
-                // Optional: Trigger search on Enter key press
+                // Trigger search on Enter key press
                 searchBar.addEventListener('keypress', function(e) {
                     if (e.key === 'Enter') {
+                        console.log("Enter key pressed"); // Debug: Confirm Enter
                         performSearch();
                     }
                 });
