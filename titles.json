@@ -1,0 +1,23 @@
+[
+    // Pages (HTML files from your navigation)
+    {"id": "page-home", "title": "Home", "url": "/index.html"},
+    {"id": "page-chemical", "title": "Chemical Works", "url": "/chemical-works.html"},
+    {"id": "page-commentaries", "title": "Commentaries", "url": "/commentaries.html"},
+    {"id": "page-fringe", "title": "Fringe", "url": "/fringe.html"},
+    {"id": "page-guest", "title": "Guest Contributions", "url": "/guest-contributions.html"},
+    {"id": "page-human", "title": "Human Condition", "url": "/human-condition.html"},
+    {"id": "page-meditation", "title": "Meditation", "url": "/meditation.html"},
+    {"id": "page-mysticism", "title": "Mysticism", "url": "/mysticism.html"},
+    {"id": "page-philosophy", "title": "Philosophy", "url": "/philosophy.html"},
+    {"id": "page-psychotropics", "title": "Psychotropics", "url": "/psychotropics.html"},
+    {"id": "page-registry", "title": "Registrvm Qvaerentivm", "url": "/registry.html"},
+
+    // Documents (Publications from chemical-works.html as sections)
+    {"id": "doc1", "title": "1 / Publication Title", "url": "/chemical-works.html#pub1"},
+    {"id": "doc2", "title": "2 / Publication Title", "url": "/chemical-works.html#pub2"},
+    {"id": "doc3", "title": "3 / Publication Title", "url": "/chemical-works.html#pub3"},
+
+    // Documents (Example PDFs, if you have them)
+    {"id": "pdf1", "title": "Synthesis of 5-AFB", "url": "/docs/synthesis-5afb.pdf"},
+    {"id": "pdf2", "title": "Alchemical Notes", "url": "/docs/alchemical-notes.pdf"}
+]
