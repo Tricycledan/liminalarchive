@@ -10,13 +10,7 @@
     {"id": "page-philosophy", "title": "Philosophy", "url": "/philosophy.html"},
     {"id": "page-psychotropics", "title": "Psychotropics", "url": "/psychotropics.html"},
     {"id": "page-registry", "title": "Registrvm Qvaerentivm", "url": "/registry.html"},
-
-    
-    {"id": "doc1", "title": "1 / Publication Title", "url": "/chemical-works.html#pub1"},
-    {"id": "doc2", "title": "2 / Publication Title", "url": "/chemical-works.html#pub2"},
-    {"id": "doc3", "title": "3 / Publication Title", "url": "/chemical-works.html#pub3"},
-
-   
-    {"id": "pdf1", "title": "Synthesis of 5-AFB", "url": "/docs/synthesis-5afb.pdf"},
-    {"id": "pdf2", "title": "Alchemical Notes", "url": "/docs/alchemical-notes.pdf"}
+    {"id": "pub1", "title": "1 / Publication Title", "url": "/chemical-works.html#pub1"},
+    {"id": "pub2", "title": "2 / Publication Title", "url": "/chemical-works.html#pub2"},
+    {"id": "pub3", "title": "3 / Publication Title", "url": "/chemical-works.html#pub3"}
 ]
