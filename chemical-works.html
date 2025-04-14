@@ -465,21 +465,25 @@
     console.log("Search script started");
 
     let searchData = [];
+    const fetchUrl = "/titles.json"; // Try "./titles.json" if this fails
+    console.log("Attempting to fetch:", fetchUrl);
 
-    fetch("/titles.json")
+    fetch(fetchUrl)
       .then(response => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
-        // Log raw response for debugging
-        return response.text().then(text => {
-          console.log("Raw titles.json response:", text);
-          return JSON.parse(text); // Parse manually to catch errors
-        });
+        return response.text();
       })
-      .then(data => {
-        console.log("titles.json parsed successfully:", data);
-        searchData = data;
+      .then(text => {
+        console.log("Raw titles.json response:", text);
+        try {
+          const data = JSON.parse(text);
+          console.log("titles.json parsed successfully:", data);
+          searchData = data;
+        } catch (e) {
+          throw new Error("JSON parse error: " + e.message);
+        }
 
         const searchBar = document.getElementById('searchBar');
         const searchButton = document.getElementById('searchButton');
@@ -567,7 +571,8 @@
       })
       .catch(error => {
         console.error("Error loading titles.json:", error.message);
-        console.error("Please check that titles.json exists at https://your-username.github.io/your-repo/titles.json and contains valid JSON (no comments, proper quotes).");
+        console.error("Please check that titles.json exists at your GitHub Pages root (e.g., https://your-username.github.io/your-repo/titles.json) and contains valid JSON (no comments, proper quotes).");
+        console.error("Try accessing the file directly in your browser to verify its contents.");
       });
   </script>
 </body>
