@@ -59,11 +59,9 @@
       list-style: none;
       display: flex;
       justify-content: space-between;
-      /* Changed to space-between for search bar */
       align-items: center;
       padding: 0;
       margin: 0 170px;
-      /* Adjusted margin */
       width: auto;
     }
 
@@ -130,28 +128,21 @@
       color: #D0D0D0;
       border: none;
       padding: 0;
-      /* Remove padding to control size precisely */
       width: 70px;
       height: 32px;
-      /* Matches search bar height */
       font-family: 'Inknut Antiqua', serif;
       font-size: 14px;
       cursor: pointer;
       margin-left: 0px;
       border-radius: 0;
-      /* Straight edges */
       transition: background-color 0.3s ease;
       display: flex;
-      /* Flexbox for centering */
       align-items: center;
-      /* Vertical centering */
       justify-content: center;
-      /* Horizontal centering */
     }
 
     #searchButton:hover {
       background-color: #800020;
-      /* Slightly darker red on hover */
     }
 
     #searchBar {
@@ -159,13 +150,10 @@
       color: var(--text-primary);
       border: 1px solid var(--accent-color);
       padding: 6px 12px;
-      /* Slimmer: reduced padding from 8px to 6px */
       font-family: 'Inknut Antiqua', serif;
       font-size: 14px;
       width: 240px;
-      /* Longer: increased from 200px to 240px */
       height: 32px;
-      /* Slimmer: explicit height to match button */
       border-radius: 0px;
     }
 
@@ -195,11 +183,6 @@
       overflow-y: auto;
     }
 
-    #searchBar:focus+#searchResults,
-    #searchResults:hover {
-      display: block;
-    }
-
     #searchResults p {
       margin: 5px 0;
       font-size: 14px;
@@ -216,7 +199,6 @@
       color: var(--red);
     }
 
-    /* Rest of your styles remain unchanged */
     .category-hero {
       position: relative;
       height: 50vh;
@@ -394,13 +376,12 @@
       }
 
       #searchButton {
-        width: 40px;
+        width: 70px;
         height: 32px;
       }
 
       #searchResults {
         width: 100%;
-        /* Matches search bar width on mobile */
         min-width: unset;
       }
     }
@@ -429,7 +410,6 @@
           </li>
           <li class="nav-registry"><a href="registry.html">REGISTRVM QVAERENTIVM</a></li>
         </div>
-        <!-- Search Bar with Button on Right -->
         <div class="search-container">
           <input type="text" id="searchBar" placeholder="What do you seek?">
           <button id="searchButton">Search</button>
@@ -486,7 +466,7 @@
 
     let searchData = [];
 
-    fetch("titles.json")
+    fetch("/titles.json")
       .then(response => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -506,6 +486,8 @@
           return;
         }
 
+        console.log("Search elements found");
+
         function showDropdownResults(searchTerm) {
           resultsDiv.innerHTML = '';
 
@@ -520,10 +502,12 @@
 
           if (matches.length > 0) {
             matches.forEach(item => {
+              const resultItem = document.createElement("p"); // Wrap in <p> for CSS
               const link = document.createElement("a");
               link.href = item.url;
               link.textContent = item.title;
-              resultsDiv.appendChild(link);
+              resultItem.appendChild(link);
+              resultsDiv.appendChild(resultItem);
             });
             resultsDiv.style.display = 'block';
           } else {
@@ -539,28 +523,40 @@
         });
 
         searchButton.addEventListener('click', () => {
+          const searchTerm = searchBar.value.trim().toLowerCase();
+          console.log("Button clicked. Searching for:", searchTerm);
           const firstMatch = searchData.find(item =>
-            item.title.toLowerCase().includes(searchBar.value.trim().toLowerCase())
+            item.title.toLowerCase().includes(searchTerm)
           );
           if (firstMatch) {
+            console.log("Navigating to:", firstMatch.url);
             window.location.href = firstMatch.url;
+          } else {
+            console.log("No matches for navigation");
+            showDropdownResults(searchTerm); // Show dropdown even if no match
           }
         });
 
-        searchBar.addEventListener('keypress', function (e) {
+        searchBar.addEventListener('keypress', function(e) {
           if (e.key === 'Enter') {
-            console.log("Enter key pressed");
+            const searchTerm = searchBar.value.trim().toLowerCase();
+            console.log("Enter key pressed. Searching for:", searchTerm);
             const firstMatch = searchData.find(item =>
-              item.title.toLowerCase().includes(searchBar.value.trim().toLowerCase())
+              item.title.toLowerCase().includes(searchTerm)
             );
             if (firstMatch) {
+              console.log("Navigating to:", firstMatch.url);
               window.location.href = firstMatch.url;
+            } else {
+              console.log("No matches for navigation");
+              showDropdownResults(searchTerm); // Show dropdown even if no match
             }
           }
         });
 
-        document.addEventListener('click', function (e) {
-          if (!document.querySelector(".search-container").contains(e.target)) {
+        document.addEventListener('click', function(e) {
+          if (!searchBar.contains(e.target) && !searchButton.contains(e.target) && !resultsDiv.contains(e.target)) {
+            console.log("Clicked outside. Hiding results");
             resultsDiv.style.display = 'none';
           }
         });
