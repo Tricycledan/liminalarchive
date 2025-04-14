@@ -502,7 +502,7 @@
 
           if (matches.length > 0) {
             matches.forEach(item => {
-              const resultItem = document.createElement("p"); // Wrap in <p> for CSS
+              const resultItem = document.createElement("p");
               const link = document.createElement("a");
               link.href = item.url;
               link.textContent = item.title;
@@ -533,11 +533,11 @@
             window.location.href = firstMatch.url;
           } else {
             console.log("No matches for navigation");
-            showDropdownResults(searchTerm); // Show dropdown even if no match
+            showDropdownResults(searchTerm);
           }
         });
 
-        searchBar.addEventListener('keypress', function(e) {
+        searchBar.addEventListener('keypress', function (e) {
           if (e.key === 'Enter') {
             const searchTerm = searchBar.value.trim().toLowerCase();
             console.log("Enter key pressed. Searching for:", searchTerm);
@@ -549,19 +549,22 @@
               window.location.href = firstMatch.url;
             } else {
               console.log("No matches for navigation");
-              showDropdownResults(searchTerm); // Show dropdown even if no match
+              showDropdownResults(searchTerm);
             }
           }
         });
 
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
           if (!searchBar.contains(e.target) && !searchButton.contains(e.target) && !resultsDiv.contains(e.target)) {
             console.log("Clicked outside. Hiding results");
             resultsDiv.style.display = 'none';
           }
         });
       })
-      .catch(error => console.error("Error loading titles:", error));
+      .catch(error => {
+        console.error("Error loading titles.json:", error.message);
+        console.error("Please check that titles.json exists at the root of your GitHub Pages repo and contains valid JSON.");
+      });
   </script>
 </body>
 
