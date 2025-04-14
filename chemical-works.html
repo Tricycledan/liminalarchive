@@ -172,7 +172,7 @@
       display: none;
       position: absolute;
       top: 100%;
-      right: 0;
+      left: 0; /* Changed from right: 0 to align left */
       background-color: var(--bg-secondary);
       min-width: 240px;
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -465,10 +465,8 @@
     console.log("Search script started");
 
     let searchData = [];
-    const fetchUrl = "/titles.json"; // Try "./titles.json" if this fails
-    console.log("Attempting to fetch:", fetchUrl);
 
-    fetch(fetchUrl)
+    fetch("/titles.json")
       .then(response => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -545,7 +543,7 @@
           }
         });
 
-        searchBar.addEventListener('keypress', function (e) {
+        searchBar.addEventListener('keypress', function(e) {
           if (e.key === 'Enter') {
             const searchTerm = searchBar.value.trim().toLowerCase();
             console.log("Enter key pressed. Searching for:", searchTerm);
@@ -562,7 +560,7 @@
           }
         });
 
-        document.addEventListener('click', function (e) {
+        document.addEventListener('click', function(e) {
           if (!searchBar.contains(e.target) && !searchButton.contains(e.target) && !resultsDiv.contains(e.target)) {
             console.log("Clicked outside. Hiding results");
             resultsDiv.style.display = 'none';
@@ -571,8 +569,7 @@
       })
       .catch(error => {
         console.error("Error loading titles.json:", error.message);
-        console.error("Please check that titles.json exists at your GitHub Pages root (e.g., https://your-username.github.io/your-repo/titles.json) and contains valid JSON (no comments, proper quotes).");
-        console.error("Try accessing the file directly in your browser to verify its contents.");
+        console.error("Check titles.json at your GitHub Pages root (e.g., https://your-username.github.io/your-repo/titles.json).");
       });
   </script>
 </body>
