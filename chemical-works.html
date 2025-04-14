@@ -1,525 +1,572 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Chemical Works - The Liminal Archive: Exploring alchemical and chemical knowledge">
-    <title>Chemical Works | The Liminal Archive</title>
-    
-    <!-- Font -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@400;700&display=swap" as="style" onload="this.rel='stylesheet'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@400;700&display=swap" rel="stylesheet"></noscript>
-    
-    <style>
-        :root {
-            --bg-primary: #1A1A1A;
-            --bg-secondary: #1e1e1e;
-            --text-primary: #A0A0A0;
-            --text-secondary: #b0b0b0;
-            --accent-color: #4a4a4a;
-            --red: #A10129;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Chemical Works - The Liminal Archive: Exploring alchemical and chemical knowledge">
+  <title>Chemical Works | The Liminal Archive</title>
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            transition: all 0.3s ease;
-        }
+  <!-- Font -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@400;700&display=swap"
+    as="style" onload="this.rel='stylesheet'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@400;700&display=swap" rel="stylesheet">
+  </noscript>
 
-        body {
-            font-family: 'Inknut Antiqua', serif;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+  <style>
+    :root {
+      --bg-primary: #1A1A1A;
+      --bg-secondary: #1e1e1e;
+      --text-primary: #A0A0A0;
+      --text-secondary: #b0b0b0;
+      --accent-color: #4a4a4a;
+      --red: #A10129;
+    }
 
-        .site-margin {
-            margin-left: 170px;
-            margin-right: 170px;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: all 0.3s ease;
+    }
 
-        #SITE_HEADER {
-            background-color: rgba(0, 0, 0, 0.9);
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(10px);
-            width: 100vw;
-            margin: 0;
-        }
+    body {
+      font-family: 'Inknut Antiqua', serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: space-between; /* Changed to space-between for search bar */
-            align-items: center;
-            padding: 0;
-            margin: 0 170px; /* Adjusted margin */
-            width: auto;
-        }
+    .site-margin {
+      margin-left: 170px;
+      margin-right: 170px;
+    }
 
-        .nav-left {
-            display: flex;
-            align-items: center;
-        }
+    #SITE_HEADER {
+      background-color: rgba(0, 0, 0, 0.9);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      width: 100vw;
+      margin: 0;
+    }
 
-        nav li {
-            position: relative;
-            margin: 0 20px;
-        }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      /* Changed to space-between for search bar */
+      align-items: center;
+      padding: 0;
+      margin: 0 170px;
+      /* Adjusted margin */
+      width: auto;
+    }
 
-        nav a {
-            color: var(--text-primary);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            font-family: 'Inknut Antiqua', serif;
-        }
+    .nav-left {
+      display: flex;
+      align-items: center;
+    }
 
-        nav a:hover {
-            color: var(--red);
-        }
+    nav li {
+      position: relative;
+      margin: 0 20px;
+    }
 
-        nav ul ul {
-            display: none;
-            position: absolute;
-            background-color: var(--bg-secondary);
-            min-width: 200px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-            border-radius: 4px;
-            padding: 10px 0;
-            top: 100%;
-            left: 0;
-        }
+    nav a {
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: color 0.3s ease;
+      font-family: 'Inknut Antiqua', serif;
+    }
 
-        nav li:hover > ul {
-            display: block;
-            z-index: 101;
-        }
+    nav a:hover {
+      color: var(--red);
+    }
 
-        nav ul ul li {
-            margin: 0;
-            padding: 10px 20px;
-        }
+    nav ul ul {
+      display: none;
+      position: absolute;
+      background-color: var(--bg-secondary);
+      min-width: 200px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      border-radius: 4px;
+      padding: 10px 0;
+      top: 100%;
+      left: 0;
+    }
 
-        .nav-registry a {
-            color: var(--red);
-        }
+    nav li:hover>ul {
+      display: block;
+      z-index: 101;
+    }
 
-        .nav-registry a:hover {
-            color: #808080;
-        }
+    nav ul ul li {
+      margin: 0;
+      padding: 10px 20px;
+    }
 
-        /* Search Bar Styles */
-        .search-container {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
+    .nav-registry a {
+      color: var(--red);
+    }
 
-        #searchButton {
-            background-color: var(--red);
-            color: #D0D0D0;
-            border: none;
-            padding: 0; /* Remove padding to control size precisely */
-            width: 70px;
-            height: 32px; /* Matches search bar height */
-            font-family: 'Inknut Antiqua', serif;
-            font-size: 14px;
-            cursor: pointer;
-            margin-left: 0px;
-            border-radius: 0; /* Straight edges */
-            transition: background-color 0.3s ease;
-            display: flex; /* Flexbox for centering */
-            align-items: center; /* Vertical centering */
-            justify-content: center; /* Horizontal centering */
-        }
+    .nav-registry a:hover {
+      color: #808080;
+    }
 
-        #searchButton:hover {
-            background-color: #800020; /* Slightly darker red on hover */
-        }
-        
-        #searchBar {
-            background-color: var(--bg-secondary);
-            color: var(--text-primary);
-            border: 1px solid var(--accent-color);
-            padding: 6px 12px; /* Slimmer: reduced padding from 8px to 6px */
-            font-family: 'Inknut Antiqua', serif;
-            font-size: 14px;
-            width: 240px; /* Longer: increased from 200px to 240px */
-            height: 32px; /* Slimmer: explicit height to match button */
-            border-radius: 0px;
-        }
+    /* Search Bar Styles */
+    .search-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
 
-        #searchBar:focus {
-            outline: none;
-            border-color: var(--red);
-            color: var(--text-secondary);
-        }
+    #searchButton {
+      background-color: var(--red);
+      color: #D0D0D0;
+      border: none;
+      padding: 0;
+      /* Remove padding to control size precisely */
+      width: 70px;
+      height: 32px;
+      /* Matches search bar height */
+      font-family: 'Inknut Antiqua', serif;
+      font-size: 14px;
+      cursor: pointer;
+      margin-left: 0px;
+      border-radius: 0;
+      /* Straight edges */
+      transition: background-color 0.3s ease;
+      display: flex;
+      /* Flexbox for centering */
+      align-items: center;
+      /* Vertical centering */
+      justify-content: center;
+      /* Horizontal centering */
+    }
 
-        #searchBar::placeholder {
-            color: var(--text-primary);
-            opacity: 0.7;
-        }
+    #searchButton:hover {
+      background-color: #800020;
+      /* Slightly darker red on hover */
+    }
 
-        #searchResults {
-            display: none;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background-color: var(--bg-secondary);
-            min-width: 240px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-            border-radius: 0px;
-            padding: 10px;
-            z-index: 102;
-            max-height: 300px;
-            overflow-y: auto;
-        }
+    #searchBar {
+      background-color: var(--bg-secondary);
+      color: var(--text-primary);
+      border: 1px solid var(--accent-color);
+      padding: 6px 12px;
+      /* Slimmer: reduced padding from 8px to 6px */
+      font-family: 'Inknut Antiqua', serif;
+      font-size: 14px;
+      width: 240px;
+      /* Longer: increased from 200px to 240px */
+      height: 32px;
+      /* Slimmer: explicit height to match button */
+      border-radius: 0px;
+    }
 
-        #searchBar:focus + #searchResults,
-        #searchResults:hover {
-            display: block;
-        }
+    #searchBar:focus {
+      outline: none;
+      border-color: var(--red);
+      color: var(--text-secondary);
+    }
 
-        #searchResults p {
-            margin: 5px 0;
-            font-size: 14px;
-        }
+    #searchBar::placeholder {
+      color: var(--text-primary);
+      opacity: 0.7;
+    }
 
-        #searchResults a {
-            color: var(--text-primary);
-            text-decoration: none;
-        }
+    #searchResults {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: var(--bg-secondary);
+      min-width: 240px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      border-radius: 0px;
+      padding: 10px;
+      z-index: 102;
+      max-height: 300px;
+      overflow-y: auto;
+    }
 
-        #searchResults a:hover {
-            color: var(--red);
-        }
+    #searchBar:focus+#searchResults,
+    #searchResults:hover {
+      display: block;
+    }
 
-        /* Rest of your styles remain unchanged */
-        .category-hero {
-            position: relative;
-            height: 50vh;
-            min-height: 400px;
-            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),
-                        url('images/chem_header.jpg') center 80% / cover no-repeat;
-            background-attachment: fixed;
-        }
+    #searchResults p {
+      margin: 5px 0;
+      font-size: 14px;
+    }
 
-        .title-section {
-            padding: 20px 0 50px 0;
-            text-align: center;
-        }
+    #searchResults a {
+      color: var(--text-primary);
+      text-decoration: none;
+      display: block;
+      padding: 8px 10px;
+    }
 
-        .title-section .quote {
-            font-size: 13px;
-            font-style: italic;
-            color: var(--text-primary);
-            margin-bottom: 1em;
-        }
+    #searchResults a:hover {
+      color: var(--red);
+    }
 
-        .title-section .attribution {
-            font-size: 13px;
-            font-style: italic;
-            color: var(--text-primary);
-            margin-bottom: 3em;
-        }
+    /* Rest of your styles remain unchanged */
+    .category-hero {
+      position: relative;
+      height: 50vh;
+      min-height: 400px;
+      background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+        url('images/chem_header.jpg') center 80% / cover no-repeat;
+      background-attachment: fixed;
+    }
 
-        .title-section h1 {
-            font-size: 56px;
-            font-weight: 400;
-            color: var(--red);
-            margin-bottom: 0.5em;
-        }
+    .title-section {
+      padding: 20px 0 50px 0;
+      text-align: center;
+    }
 
-        .title-section .description {
-            font-size: 18px;
-            color: var(--text-primary);
-            margin-bottom: 0.5em;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+    .title-section .quote {
+      font-size: 13px;
+      font-style: italic;
+      color: var(--text-primary);
+      margin-bottom: 1em;
+    }
 
-        .publications {
-            padding: 0 0 50px 0;
-        }
+    .title-section .attribution {
+      font-size: 13px;
+      font-style: italic;
+      color: var(--text-primary);
+      margin-bottom: 3em;
+    }
 
-        .publication-box {
-            padding: 20px;
-            background-color: #333333;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            position: relative;
-        }
+    .title-section h1 {
+      font-size: 56px;
+      font-weight: 400;
+      color: var(--red);
+      margin-bottom: 0.5em;
+    }
 
-        .publication-box h5 {
-            font-family: 'Inknut Antiqua', serif;
-            color: var(--red);
-            margin-bottom: 10px;
-            font-size: 20px;
-            font-weight: 400;
-        }
+    .title-section .description {
+      font-size: 18px;
+      color: var(--text-primary);
+      margin-bottom: 0.5em;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
-        .publication-box p {
-            font-family: 'Inknut Antiqua', serif;
-            font-size: 14px;
-            font-weight: 400;
-            color: #CCCCCC;
-        }
+    .publications {
+      padding: 0 0 50px 0;
+    }
 
-        .publication-box .pdf-icon {
-            position: absolute;
-            top: 50%;
-            right: 20px;
-            transform: translateY(-50%);
-            width: 80px;
-            height: auto;
-            transition: opacity 0.3s ease;
-            cursor: pointer;
-        }
+    .publication-box {
+      padding: 20px;
+      background-color: #333333;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      position: relative;
+    }
 
-        .pdf-link {
-            display: block;
-            text-decoration: none;
-            cursor: pointer;
-        }
+    .publication-box h5 {
+      font-family: 'Inknut Antiqua', serif;
+      color: var(--red);
+      margin-bottom: 10px;
+      font-size: 20px;
+      font-weight: 400;
+    }
 
-        .pdf-link:hover .pdf-icon {
-            opacity: 0.7;
-        }
+    .publication-box p {
+      font-family: 'Inknut Antiqua', serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: #CCCCCC;
+    }
 
-        #SITE_FOOTER {
-            background-color: #737373;
-            color: var(--text-primary);
-            padding: 30px 20px;
-            text-align: center;
-        }
+    .publication-box .pdf-icon {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      width: 80px;
+      height: auto;
+      transition: opacity 0.3s ease;
+      cursor: pointer;
+    }
 
-        #SITE_FOOTER .quote {
-            font-size: 22px;
-            font-weight: 400;
-            color: #000000;
-            letter-spacing: 0.45em;
-            display: block;
-            margin-bottom: 10px;
-        }
+    .pdf-link {
+      display: block;
+      text-decoration: none;
+      cursor: pointer;
+    }
 
-        #SITE_FOOTER .copyright {
-            font-size: 14px;
-            color: #000000;
-            display: block;
-            text-align: left;
-            margin-left: 170px;
-        }
+    .pdf-link:hover .pdf-icon {
+      opacity: 0.7;
+    }
 
-        @media (max-width: 768px) {
-            .site-margin {
-                margin-left: 20px;
-                margin-right: 20px;
-            }
-            nav ul {
-                flex-direction: column;
-                padding: 10px 20px;
-                margin: 0;
-                width: 100%;
-            }
-            .nav-left {
-                margin-left: 20px;
-            }
-            nav ul ul {
-                position: static;
-                box-shadow: none;
-                background-color: var(--bg-primary);
-                padding: 0;
-            }
-            nav li {
-                margin: 10px 0;
-            }
-            .category-hero {
-                height: 40vh;
-                min-height: 300px;
-            }
-            .title-section h1 {
-                font-size: 40px;
-            }
-            .title-section .description {
-                font-size: 16px;
-                max-width: 400px;
-            }
-            .publication-box .pdf-icon {
-                width: 64px;
-            }
-            #SITE_FOOTER .copyright {
-                margin-left: 0;
-                text-align: center;
-            }
-            .search-container {
-                margin-top: 10px;
-            }
-            #searchBar {
-                width: 100%;
-                height: 32px;
-            }
-            #searchButton {
-                width: 40px;
-                height: 32px;
-            }
-            #searchResults {
-                width: 100%; /* Matches search bar width on mobile */
-                min-width: unset;
-            }
-        }   
-    </style>
+    #SITE_FOOTER {
+      background-color: #737373;
+      color: var(--text-primary);
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    #SITE_FOOTER .quote {
+      font-size: 22px;
+      font-weight: 400;
+      color: #000000;
+      letter-spacing: 0.45em;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    #SITE_FOOTER .copyright {
+      font-size: 14px;
+      color: #000000;
+      display: block;
+      text-align: left;
+      margin-left: 170px;
+    }
+
+    @media (max-width: 768px) {
+      .site-margin {
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+
+      nav ul {
+        flex-direction: column;
+        padding: 10px 20px;
+        margin: 0;
+        width: 100%;
+      }
+
+      .nav-left {
+        margin-left: 20px;
+      }
+
+      nav ul ul {
+        position: static;
+        box-shadow: none;
+        background-color: var(--bg-primary);
+        padding: 0;
+      }
+
+      nav li {
+        margin: 10px 0;
+      }
+
+      .category-hero {
+        height: 40vh;
+        min-height: 300px;
+      }
+
+      .title-section h1 {
+        font-size: 40px;
+      }
+
+      .title-section .description {
+        font-size: 16px;
+        max-width: 400px;
+      }
+
+      .publication-box .pdf-icon {
+        width: 64px;
+      }
+
+      #SITE_FOOTER .copyright {
+        margin-left: 0;
+        text-align: center;
+      }
+
+      .search-container {
+        margin-top: 10px;
+      }
+
+      #searchBar {
+        width: 100%;
+        height: 32px;
+      }
+
+      #searchButton {
+        width: 40px;
+        height: 32px;
+      }
+
+      #searchResults {
+        width: 100%;
+        /* Matches search bar width on mobile */
+        min-width: unset;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <header id="SITE_HEADER">
-        <nav aria-label="Main Navigation">
-            <ul>
-                <div class="nav-left">
-                    <li><a href="index.html">HOME</a></li>
-                    <li>
-                        <a href="#" aria-haspopup="true">Archive</a>
-                        <ul aria-label="Archive Sections">
-                            <li><a href="chemical-works.html" aria-current="page">Chemical Works</a></li>
-                            <li><a href="commentaries.html">Commentaries</a></li>
-                            <li><a href="fringe.html">Fringe</a></li>
-                            <li><a href="guest-contributions.html">Guest Contributions</a></li>
-                            <li><a href="human-condition.html">Human Condition</a></li>
-                            <li><a href="meditation.html">Meditation</a></li>
-                            <li><a href="mysticism.html">Mysticism</a></li>
-                            <li><a href="philosophy.html">Philosophy</a></li>
-                            <li><a href="psychotropics.html">Psychotropics</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-registry"><a href="registry.html">REGISTRVM QVAERENTIVM</a></li>
-                </div>
-                <!-- Search Bar with Button on Right -->
-                <div class="search-container">
-                    <input type="text" id="searchBar" placeholder="What do you seek?">
-                    <button id="searchButton">Search</button>
-                    <div id="searchResults"></div>
-                </div>
+  <header id="SITE_HEADER">
+    <nav aria-label="Main Navigation">
+      <ul>
+        <div class="nav-left">
+          <li><a href="index.html">HOME</a></li>
+          <li>
+            <a href="#" aria-haspopup="true">Archive</a>
+            <ul aria-label="Archive Sections">
+              <li><a href="chemical-works.html" aria-current="page">Chemical Works</a></li>
+              <li><a href="commentaries.html">Commentaries</a></li>
+              <li><a href="fringe.html">Fringe</a></li>
+              <li><a href="guest-contributions.html">Guest Contributions</a></li>
+              <li><a href="human-condition.html">Human Condition</a></li>
+              <li><a href="meditation.html">Meditation</a></li>
+              <li><a href="mysticism.html">Mysticism</a></li>
+              <li><a href="philosophy.html">Philosophy</a></li>
+              <li><a href="psychotropics.html">Psychotropics</a></li>
             </ul>
-        </nav>
-    </header>
+          </li>
+          <li class="nav-registry"><a href="registry.html">REGISTRVM QVAERENTIVM</a></li>
+        </div>
+        <!-- Search Bar with Button on Right -->
+        <div class="search-container">
+          <input type="text" id="searchBar" placeholder="What do you seek?">
+          <button id="searchButton">Search</button>
+          <div id="searchResults"></div>
+        </div>
+      </ul>
+    </nav>
+  </header>
 
-    <main>
-        <section class="category-hero"></section>
+  <main>
+    <section class="category-hero"></section>
 
-        <section class="title-section site-margin">
-            <div class="quote">
-                <em>"The Art of alchemy is concerned with the transformation of bodies, and this transformation is brought about by the separations of the soul from the body, and then by their reunion."</em>
-            </div>
-            <div class="attribution">
-                <em>- Zoimos of Panapolis</em>
-            </div>
-            <h1>Chemical Works</h1>
-            <div class="description">
-                Find below, real world theoretical and practical synthetic organic chemistry projects performed by Tricycle Dan
-            </div>
-        </section>
+    <section class="title-section site-margin">
+      <div class="quote">
+        <em>"The Art of alchemy is concerned with the transformation of bodies, and this transformation is brought about
+          by the separations of the soul from the body, and then by their reunion."</em>
+      </div>
+      <div class="attribution">
+        <em>- Zoimos of Panapolis</em>
+      </div>
+      <h1>Chemical Works</h1>
+      <div class="description">
+        Find below, real world theoretical and practical synthetic organic chemistry projects performed by Tricycle Dan
+      </div>
+    </section>
 
-        <section class="publications site-margin">
-            <h2>5-AFB Design</h2>
-            <div class="publication-box" id="pub1">
-                <h5>1 / Publication Title</h5>
-                <p>Describe the publication and include any relevant details.</p>
-                <img src="images/pdf-icon.png" alt="PDF" class="pdf-icon">
-            </div>
-            <div class="publication-box" id="pub2">
-                <h5>2 / Publication Title</h5>
-                <p>Describe the publication and include any relevant details.</p>
-                <img src="images/pdf-icon.png" alt="PDF" class="pdf-icon">
-            </div>
-            <div class="publication-box" id="pub3">
-                <h5>3 / Publication Title</h5>
-                <p>Describe the publication and include any relevant details.</p>
-                <img src="images/pdf-icon.png" alt="PDF" class="pdf-icon">
-            </div>
-        </section>
-    </main>
+    <section class="publications site-margin">
+      <h2>5-AFB Design</h2>
+      <div class="publication-box" id="pub1">
+        <h5>1 / Publication Title</h5>
+        <p>Describe the publication and include any relevant details.</p>
+        <img src="images/pdf-icon.png" alt="PDF" class="pdf-icon">
+      </div>
+      <div class="publication-box" id="pub2">
+        <h5>2 / Publication Title</h5>
+        <p>Describe the publication and include any relevant details.</p>
+        <img src="images/pdf-icon.png" alt="PDF" class="pdf-icon">
+      </div>
+      <div class="publication-box" id="pub3">
+        <h5>3 / Publication Title</h5>
+        <p>Describe the publication and include any relevant details.</p>
+        <img src="images/pdf-icon.png" alt="PDF" class="pdf-icon">
+      </div>
+    </section>
+  </main>
 
-    <footer id="SITE_FOOTER">
-        <span class="quote">Quod Latet, Se Aperit Quaerenti</span>
-        <span class="copyright">© 2025 The Liminal Archive</span>
-    </footer>
+  <footer id="SITE_FOOTER">
+    <span class="quote">Quod Latet, Se Aperit Quaerenti</span>
+    <span class="copyright">© 2025 The Liminal Archive</span>
+  </footer>
 
-    <script>
-        // Debugging: Log when script starts
-        console.log("Search script started");
-        fetch("/titles.json")
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log("titles.json loaded successfully:", data); // Debug: Log the data
+  <script>
+    console.log("Search script started");
 
-                const searchBar = document.getElementById('searchBar');
-                const searchButton = document.getElementById('searchButton');
-                const resultsDiv = document.getElementById('searchResults');
+    let searchData = [];
 
-                // Check if elements exist
-                if (!searchBar || !searchButton || !resultsDiv) {
-                    console.error("One or more elements not found:", { searchBar, searchButton, resultsDiv });
-                    return;
-                }
+    fetch("/titles.json")
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log("titles.json loaded successfully:", data);
+        searchData = data;
 
-                console.log("Search elements found"); // Debug: Confirm elements
-                function performSearch() {
-                    const searchTerm = searchBar.value.toLowerCase();
-                    resultsDiv.innerHTML = '';
-                    console.log("Searching for:", searchTerm); // Debug: Log search term
+        const searchBar = document.getElementById('searchBar');
+        const searchButton = document.getElementById('searchButton');
+        const resultsDiv = document.getElementById('searchResults');
 
-                    if (searchTerm.length > 0) {
-                        const matches = data.filter(doc => 
-                            doc.title.toLowerCase().includes(searchTerm)
-                        );
-                        console.log("Matches found:", matches); // Debug: Log matches
+        if (!searchBar || !searchButton || !resultsDiv) {
+          console.error("One or more elements not found:", { searchBar, searchButton, resultsDiv });
+          return;
+        }
 
-                        if (matches.length > 0) {
-                            matches.forEach(match => {
-                                resultsDiv.innerHTML += `<p><a href="${match.url}">${match.title}</a></p>`;
-                            });
-                        } else {
-                            resultsDiv.innerHTML = `<p>No matching titles found.</p>`;
-                        }
-                        resultsDiv.style.display = 'block';
-                    } else {
-                        resultsDiv.style.display = 'none';
-                    }
-                }
+        function showDropdownResults(searchTerm) {
+          resultsDiv.innerHTML = '';
 
-                // Show results as you type
-                searchBar.addEventListener('input', () => {
-                    console.log("Input event triggered"); // Debug: Confirm input
-                    performSearch();
-                });
+          if (searchTerm.length === 0) {
+            resultsDiv.style.display = 'none';
+            return;
+          }
 
-                // Trigger search on button click
-                searchButton.addEventListener('click', performSearch);
+          const matches = searchData.filter(item =>
+            item.title.toLowerCase().includes(searchTerm)
+          );
 
-                // Trigger search on Enter key press
-                searchBar.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        console.log("Enter key pressed"); // Debug: Confirm Enter
-                        performSearch();
-                    }
-                });
+          if (matches.length > 0) {
+            matches.forEach(item => {
+              const link = document.createElement("a");
+              link.href = item.url;
+              link.textContent = item.title;
+              resultsDiv.appendChild(link);
+            });
+            resultsDiv.style.display = 'block';
+          } else {
+            resultsDiv.innerHTML = `<p>No matching titles found.</p>`;
+            resultsDiv.style.display = 'block';
+          }
+        }
 
-                // Hide results when clicking outside
-                document.addEventListener('click', function(e) {
-                    if (!searchBar.contains(e.target) && !searchButton.contains(e.target) && !resultsDiv.contains(e.target)) {
-                        resultsDiv.style.display = 'none';
-                    }
-                });
-            })
-            .catch(error => console.error('Error loading titles:', error));
-    </script>
+        searchBar.addEventListener('input', () => {
+          const searchTerm = searchBar.value.trim().toLowerCase();
+          console.log("Input event. Searching for:", searchTerm);
+          showDropdownResults(searchTerm);
+        });
+
+        searchButton.addEventListener('click', () => {
+          const firstMatch = searchData.find(item =>
+            item.title.toLowerCase().includes(searchBar.value.trim().toLowerCase())
+          );
+          if (firstMatch) {
+            window.location.href = firstMatch.url;
+          }
+        });
+
+        searchBar.addEventListener('keypress', function (e) {
+          if (e.key === 'Enter') {
+            console.log("Enter key pressed");
+            const firstMatch = searchData.find(item =>
+              item.title.toLowerCase().includes(searchBar.value.trim().toLowerCase())
+            );
+            if (firstMatch) {
+              window.location.href = firstMatch.url;
+            }
+          }
+        });
+
+        document.addEventListener('click', function (e) {
+          if (!document.querySelector(".search-container").contains(e.target)) {
+            resultsDiv.style.display = 'none';
+          }
+        });
+      })
+      .catch(error => console.error("Error loading titles:", error));
+  </script>
 </body>
+
 </html>
