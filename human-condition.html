@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="On the Human Condition - The Liminal Archive: Exploring the edges of knowledge and possibility">
+    <meta name="description"
+        content="On the Human Condition - The Liminal Archive: Exploring the edges of knowledge and possibility">
     <title>On the Human Condition | The Liminal Archive</title>
     <link href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Dark Theme Reset */
         :root {
             --bg-primary: #1A1A1A;
             --bg-secondary: #1e1e1e;
@@ -21,7 +22,7 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            transition: all 0.3s ease; /* Added from Fringe */
+            transition: all 0.3s ease;
         }
 
         body {
@@ -29,7 +30,7 @@
             background-color: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
-            overflow-x: hidden; /* Added from Fringe */
+            overflow-x: hidden;
         }
 
         .site-margin {
@@ -37,37 +38,36 @@
             margin-right: 170px;
         }
 
-        /* Menu Bar Styles from Fringe */
         #SITE_HEADER {
-            background-color: rgba(0, 0, 0, 0.9); /* Updated from #000000 */
+            background-color: rgba(0, 0, 0, 0.9);
             padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 100;
             backdrop-filter: blur(10px);
-            width: 100vw; /* Updated from 100% */
+            width: 100vw;
             margin: 0;
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            justify-content: flex-start;
+            justify-content: space-between;
             align-items: center;
-            padding: 0; /* Updated from padding-left: 170px */
-            margin: 0;
-            width: 100%;
+            padding: 0;
+            margin: 0 170px;
+            width: auto;
         }
 
         .nav-left {
             display: flex;
             align-items: center;
-            margin-left: 170px;
         }
 
         nav li {
             position: relative;
             margin: 0 20px;
+            display: inline-block;
         }
 
         nav a {
@@ -86,14 +86,16 @@
             position: absolute;
             background-color: var(--bg-secondary);
             min-width: 200px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             border-radius: 4px;
             padding: 10px 0;
             top: 100%;
             left: 0;
+            transform: none;
+            margin-left: 0;
         }
 
-        nav li:hover > ul {
+        nav li:hover>ul {
             display: block;
             z-index: 101;
         }
@@ -104,20 +106,104 @@
         }
 
         .nav-registry a {
-            color: var(--red); /* Permanently red */
+            color: var(--red);
         }
 
         .nav-registry a:hover {
-            color: #808080; /* Grey on hover */
+            color: #808080;
         }
 
-        /* Original Human Condition Styles */
+        /* Search Bar Styles */
+        .search-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        #searchButton {
+            background-color: var(--red);
+            color: #D0D0D0;
+            border: none;
+            padding: 0;
+            width: 70px;
+            height: 32px;
+            font-family: 'Inknut Antiqua', serif;
+            font-size: 14px;
+            cursor: pointer;
+            margin-left: 0px;
+            border-radius: 0;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #searchButton:hover {
+            background-color: #800020;
+        }
+
+        #searchBar {
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--accent-color);
+            padding: 6px 12px;
+            font-family: 'Inknut Antiqua', serif;
+            font-size: 14px;
+            width: 240px;
+            height: 32px;
+            border-radius: 0px;
+        }
+
+        #searchBar:focus {
+            outline: none;
+            border-color: var(--red);
+            color: var(--text-secondary);
+        }
+
+        #searchBar::placeholder {
+            color: var(--text-primary);
+            opacity: 0.7;
+        }
+
+        #searchResults {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: auto;
+            background-color: var(--bg-secondary);
+            width: 240px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 0px;
+            padding: 10px;
+            z-index: 102;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        #searchResults p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        #searchResults a {
+            color: var(--text-primary);
+            text-decoration: none;
+            display: block;
+            padding: 8px 10px;
+        }
+
+        #searchResults a:hover {
+            color: var(--red);
+        }
+
         .category-hero {
             position: relative;
             height: 50vh;
             min-height: 400px;
-            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),
-                        url('images/human_header.jpg') center 80% / cover no-repeat;
+            background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+                url('images/human_header.jpg') center 80% / cover no-repeat;
             background-attachment: fixed;
         }
 
@@ -190,6 +276,18 @@
             transform: translateY(-50%);
             width: 80px;
             height: auto;
+            transition: opacity 0.3s ease;
+            cursor: pointer;
+        }
+
+        .pdf-link {
+            display: block;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .pdf-link:hover .pdf-icon {
+            opacity: 0.7;
         }
 
         #SITE_FOOTER {
@@ -221,45 +319,78 @@
                 margin-left: 20px;
                 margin-right: 20px;
             }
+
             nav ul {
                 flex-direction: column;
-                padding: 10px 20px; /* Updated from 10px 0, matches Fringe */
-                margin: 0; /* Added from Fringe */
-                width: 100%; /* Added from Fringe */
+                padding: 10px 20px;
+                margin: 0;
+                width: 100%;
+                align-items: flex-start;
             }
+
             .nav-left {
-                margin-left: 20px; /* Added for mobile, from Fringe */
+                margin-left: 20px;
             }
+
             nav ul ul {
                 position: static;
                 box-shadow: none;
                 background-color: var(--bg-primary);
                 padding: 0;
+                width: 100%;
             }
+
             nav li {
                 margin: 10px 0;
             }
+
             .category-hero {
                 height: 40vh;
                 min-height: 300px;
             }
+
             .title-section h1 {
                 font-size: 40px;
             }
+
             .title-section .description {
                 font-size: 16px;
                 max-width: 400px;
             }
+
             .publication-box .pdf-icon {
                 width: 64px;
             }
+
             #SITE_FOOTER .copyright {
                 margin-left: 0;
                 text-align: center;
             }
+
+            .search-container {
+                margin-top: 10px;
+            }
+
+            #searchBar {
+                width: 100%;
+                height: 32px;
+            }
+
+            #searchButton {
+                width: 70px;
+                height: 32px;
+            }
+
+            #searchResults {
+                width: 100%;
+                left: 0;
+                right: auto;
+                min-width: unset;
+            }
         }
     </style>
 </head>
+
 <body>
     <!-- Menu Bar from Fringe -->
     <header id="SITE_HEADER">
@@ -282,6 +413,11 @@
                         </ul>
                     </li>
                     <li class="nav-registry"><a href="registry.html">REGISTRVM QVAERENTIVM</a></li>
+                </div>
+                <div class="search-container">
+                    <input type="text" id="searchBar" placeholder="What do you seek?">
+                    <button id="searchButton">Search</button>
+                    <div id="searchResults"></div>
                 </div>
             </ul>
         </nav>
@@ -326,5 +462,117 @@
         <span class="quote">Quod Latet, Se Aperit Quaerenti</span>
         <span class="copyright">© 2025 The Liminal Archive</span>
     </footer>
+    <script>
+        console.log("Search script started");
+
+        let searchData = [];
+
+        fetch("/titles.json")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(text => {
+                console.log("Raw titles.json response:", text);
+                try {
+                    const data = JSON.parse(text);
+                    console.log("titles.json parsed successfully:", data);
+                    searchData = data;
+                } catch (e) {
+                    throw new Error("JSON parse error: " + e.message);
+                }
+
+                const searchBar = document.getElementById('searchBar');
+                const searchButton = document.getElementById('searchButton');
+                const resultsDiv = document.getElementById('searchResults');
+
+                if (!searchBar || !searchButton || !resultsDiv) {
+                    console.error("One or more elements not found:", { searchBar, searchButton, resultsDiv });
+                    return;
+                }
+
+                console.log("Search elements found");
+
+                function showDropdownResults(searchTerm) {
+                    resultsDiv.innerHTML = '';
+
+                    if (searchTerm.length === 0) {
+                        resultsDiv.style.display = 'none';
+                        return;
+                    }
+
+                    const matches = searchData.filter(item =>
+                        item.title.toLowerCase().includes(searchTerm)
+                    );
+
+                    if (matches.length > 0) {
+                        matches.forEach(item => {
+                            const resultItem = document.createElement("p");
+                            const link = document.createElement("a");
+                            link.href = item.url;
+                            link.textContent = item.title;
+                            resultItem.appendChild(link);
+                            resultsDiv.appendChild(resultItem);
+                        });
+                        resultsDiv.style.display = 'block';
+                    } else {
+                        resultsDiv.innerHTML = `<p>No matching titles found.</p>`;
+                        resultsDiv.style.display = 'block';
+                    }
+                }
+
+                searchBar.addEventListener('input', () => {
+                    const searchTerm = searchBar.value.trim().toLowerCase();
+                    console.log("Input event. Searching for:", searchTerm);
+                    showDropdownResults(searchTerm);
+                });
+
+                searchButton.addEventListener('click', () => {
+                    const searchTerm = searchBar.value.trim().toLowerCase();
+                    console.log("Button clicked. Searching for:", searchTerm);
+                    const firstMatch = searchData.find(item =>
+                        item.title.toLowerCase().includes(searchTerm)
+                    );
+                    if (firstMatch) {
+                        console.log("Navigating to:", firstMatch.url);
+                        window.location.href = firstMatch.url;
+                    } else {
+                        console.log("No matches for navigation");
+                        showDropdownResults(searchTerm);
+                    }
+                });
+
+                searchBar.addEventListener('keypress', function (e) {
+                    if (e.key === 'Enter') {
+                        const searchTerm = searchBar.value.trim().toLowerCase();
+                        console.log("Enter key pressed. Searching for:", searchTerm);
+                        const firstMatch = searchData.find(item =>
+                            item.title.toLowerCase().includes(searchTerm)
+                        );
+                        if (firstMatch) {
+                            console.log("Navigating to:", firstMatch.url);
+                            window.location.href = firstMatch.url;
+                        } else {
+                            console.log("No matches for navigation");
+                            showDropdownResults(searchTerm);
+                        }
+                    }
+                });
+
+                document.addEventListener('click', function (e) {
+                    if (!searchBar.contains(e.target) && !searchButton.contains(e.target) && !resultsDiv.contains(e.target)) {
+                        console.log("Clicked outside. Hiding results");
+                        resultsDiv.style.display = 'none';
+                    }
+                });
+            })
+            .catch(error => {
+                console.error("Error loading titles.json:", error.message);
+                console.error("Check titles.json at your GitHub Pages root (e.g., https://your-username.github.io/your-repo/titles.json).");
+            });
+    </script>
 </body>
+
 </html>
