@@ -96,6 +96,7 @@
       padding: 10px 0;
       top: 100%;
       left: 0;
+      transform: none;
     }
 
     nav li:hover>ul {
@@ -172,7 +173,8 @@
       display: none;
       position: absolute;
       top: 100%;
-      right: 0; /* Changed back to right: 0 to align right */
+      right: auto;
+      left: 0; 
       background-color: var(--bg-secondary);
       min-width: 240px;
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -181,6 +183,7 @@
       z-index: 102;
       max-height: 300px;
       overflow-y: auto;
+      width: 240px;
     }
 
     #searchResults p {
@@ -382,6 +385,8 @@
 
       #searchResults {
         width: 100%;
+        left: 0%;
+        right: auto;
         min-width: unset;
       }
     }
