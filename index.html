@@ -573,6 +573,11 @@
                     </li>
                     <li class="nav-registry"><a href="">REGISTRVM QVAERENTIVM</a></li>
                 </div>
+                <div class="search-container">
+                    <input type="text" id="searchBar" placeholder="What do you seek?">
+                    <button id="searchButton">Search</button>
+                    <div id="searchResults"></div>
+                </div>
             </ul>
         </nav>
     </header>
@@ -669,6 +674,117 @@
         <span class="quote">Quod Latet, Se Aperit Quaerenti</span>
         <span class="copyright">© 2025 The Liminal Archive</span>
     </footer>
+    <script>
+        console.log("Search script started");
+
+        let searchData = [];
+
+        fetch("/titles.json")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(text => {
+                console.log("Raw titles.json response:", text);
+                try {
+                    const data = JSON.parse(text);
+                    console.log("titles.json parsed successfully:", data);
+                    searchData = data;
+                } catch (e) {
+                    throw new Error("JSON parse error: " + e.message);
+                }
+
+                const searchBar = document.getElementById('searchBar');
+                const searchButton = document.getElementById('searchButton');
+                const resultsDiv = document.getElementById('searchResults');
+
+                if (!searchBar || !searchButton || !resultsDiv) {
+                    console.error("One or more elements not found:", { searchBar, searchButton, resultsDiv });
+                    return;
+                }
+
+                console.log("Search elements found");
+
+                function showDropdownResults(searchTerm) {
+                    resultsDiv.innerHTML = '';
+
+                    if (searchTerm.length === 0) {
+                        resultsDiv.style.display = 'none';
+                        return;
+                    }
+
+                    const matches = searchData.filter(item =>
+                        item.title.toLowerCase().includes(searchTerm)
+                    );
+
+                    if (matches.length > 0) {
+                        matches.forEach(item => {
+                            const resultItem = document.createElement("p");
+                            const link = document.createElement("a");
+                            link.href = item.url;
+                            link.textContent = item.title;
+                            resultItem.appendChild(link);
+                            resultsDiv.appendChild(resultItem);
+                        });
+                        resultsDiv.style.display = 'block';
+                    } else {
+                        resultsDiv.innerHTML = `<p>No matching titles found.</p>`;
+                        resultsDiv.style.display = 'block';
+                    }
+                }
+
+                searchBar.addEventListener('input', () => {
+                    const searchTerm = searchBar.value.trim().toLowerCase();
+                    console.log("Input event. Searching for:", searchTerm);
+                    showDropdownResults(searchTerm);
+                });
+
+                searchButton.addEventListener('click', () => {
+                    const searchTerm = searchBar.value.trim().toLowerCase();
+                    console.log("Button clicked. Searching for:", searchTerm);
+                    const firstMatch = searchData.find(item =>
+                        item.title.toLowerCase().includes(searchTerm)
+                    );
+                    if (firstMatch) {
+                        console.log("Navigating to:", firstMatch.url);
+                        window.location.href = firstMatch.url;
+                    } else {
+                        console.log("No matches for navigation");
+                        showDropdownResults(searchTerm);
+                    }
+                });
+
+                searchBar.addEventListener('keypress', function (e) {
+                    if (e.key === 'Enter') {
+                        const searchTerm = searchBar.value.trim().toLowerCase();
+                        console.log("Enter key pressed. Searching for:", searchTerm);
+                        const firstMatch = searchData.find(item =>
+                            item.title.toLowerCase().includes(searchTerm)
+                        );
+                        if (firstMatch) {
+                            console.log("Navigating to:", firstMatch.url);
+                            window.location.href = firstMatch.url;
+                        } else {
+                            console.log("No matches for navigation");
+                            showDropdownResults(searchTerm);
+                        }
+                    }
+                });
+
+                document.addEventListener('click', function (e) {
+                    if (!searchBar.contains(e.target) && !searchButton.contains(e.target) && !resultsDiv.contains(e.target)) {
+                        console.log("Clicked outside. Hiding results");
+                        resultsDiv.style.display = 'none';
+                    }
+                });
+            })
+            .catch(error => {
+                console.error("Error loading titles.json:", error.message);
+                console.error("Check titles.json at your GitHub Pages root (e.g., https://your-username.github.io/your-repo/titles.json).");
+            });
+    </script>
 </body>
 
 </html>
