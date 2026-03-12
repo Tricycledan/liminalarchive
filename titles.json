@@ -1,18 +1,86 @@
 [
-    {"id": "page-home", "title": "Home", "url": "/index.html"},
-    {"id": "page-chemical", "title": "Chemical Works", "url": "/chemical-works.html"},
-    {"id": "page-commentaries", "title": "Commentaries", "url": "/commentaries.html"},
-    {"id": "page-fringe", "title": "Fringe", "url": "/fringe.html"},
-    {"id": "page-guest", "title": "Guest Contributions", "url": "/guest-contributions.html"},
-    {"id": "page-human", "title": "Human Condition", "url": "/human-condition.html"},
-    {"id": "page-meditation", "title": "Meditation", "url": "/meditation.html"},
-    {"id": "page-mysticism", "title": "Mysticism", "url": "/mysticism.html"},
-    {"id": "page-philosophy", "title": "Philosophy", "url": "/philosophy.html"},
-    {"id": "page-psychotropics", "title": "Psychotropics", "url": "/psychotropics.html"},
-    {"id": "page-registry", "title": "Registrvm Qvaerentivm", "url": "/registry.html"},
-    {"id": "doc1", "title": "1 / Publication Title", "url": "/chemical-works.html#pub1"},
-    {"id": "doc2", "title": "2 / Publication Title", "url": "/chemical-works.html#pub2"},
-    {"id": "doc3", "title": "3 / Publication Title", "url": "/chemical-works.html#pub3"},
-    {"id": "pdf1", "title": "Synthesis of 5-AFB", "url": "/docs/synthesis-5afb.pdf"},
-    {"id": "pdf2", "title": "Alchemical Notes", "url": "/docs/alchemical-notes.pdf"}
+    {
+        "id": "page-home",
+        "title": "Home",
+        "category": "Navigation",
+        "description": "The Liminal Archive — exploring the boundaries of knowledge, consciousness, and human experience",
+        "url": "index.html"
+    },
+    {
+        "id": "page-chemical",
+        "title": "Chemical Works",
+        "category": "Archive",
+        "description": "Texts on alchemy, chemistry, and the transformation of matter",
+        "url": "chemical-works.html"
+    },
+    {
+        "id": "page-commentaries",
+        "title": "Commentaries",
+        "category": "Archive",
+        "description": "Critical commentary and analysis on philosophical and esoteric texts",
+        "url": "commentaries.html"
+    },
+    {
+        "id": "page-fringe",
+        "title": "Fringe",
+        "category": "Archive",
+        "description": "Works on the margins of accepted thought and heterodox inquiry",
+        "url": "fringe.html"
+    },
+    {
+        "id": "page-guest",
+        "title": "Guest Contributions",
+        "category": "Archive",
+        "description": "Writings contributed by fellow seekers and collaborators",
+        "url": "guest-contributions.html"
+    },
+    {
+        "id": "page-human",
+        "title": "Human Condition",
+        "category": "Archive",
+        "description": "Reflections on mortality, consciousness, suffering, and the nature of being",
+        "url": "human-condition.html"
+    },
+    {
+        "id": "page-meditation",
+        "title": "Meditation",
+        "category": "Archive",
+        "description": "Texts on contemplative practice, stillness, and interior life",
+        "url": "meditation.html"
+    },
+    {
+        "id": "page-mysticism",
+        "title": "On Mysticism and the Occult",
+        "category": "Archive",
+        "description": "Works on mystical experience, the occult, and the unseen dimensions of reality",
+        "url": "mysticism.html"
+    },
+    {
+        "id": "page-philosophy",
+        "title": "On Philosophy",
+        "category": "Archive",
+        "description": "Eastern and Western philosophical texts and inquiry",
+        "url": "philosophy.html"
+    },
+    {
+        "id": "page-psychotropics",
+        "title": "Psychotropics",
+        "category": "Archive",
+        "description": "Works on altered states, entheogenic substances, and consciousness expansion",
+        "url": "psychotropics.html"
+    },
+    {
+        "id": "page-registry",
+        "title": "Registrvm Qvaerentivm",
+        "category": "Navigation",
+        "description": "The registry of seekers — join those who wish to be notified of new additions",
+        "url": "registry.html"
+    },
+    {
+        "id": "doc-ritual-1",
+        "title": "The Ritual: A Symbiosis",
+        "category": "Mysticism — The Ritual Series",
+        "description": "Tractus. Spring 2025. An exploration of ritual as a living, reciprocal practice.",
+        "url": "pdfs/TricycleDan_Ritual1.pdf"
+    }
 ]
